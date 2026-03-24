@@ -1,15 +1,15 @@
 const infoPanel  = document.getElementById('info-panel');
 const worksPanel = document.getElementById('works-panel');
-
-const allPanels = [infoPanel, worksPanel];
-
+const allPanels  = [infoPanel, worksPanel];
 const collapsedSize = new Map();
+
+
+/* ── Panel open / close ──────────────────────────────────── */
 
 function openPanel(panel) {
   const content = panel.querySelector('.panel-content');
-
-  const startW = panel.offsetWidth;
-  const startH = panel.offsetHeight;
+  const startW  = panel.offsetWidth;
+  const startH  = panel.offsetHeight;
   collapsedSize.set(panel.id, { w: startW, h: startH });
 
   content.style.display = 'block';
@@ -20,16 +20,13 @@ function openPanel(panel) {
 
   panel.style.width  = startW + 'px';
   panel.style.height = startH + 'px';
-
   void panel.offsetWidth;
 
   panel.classList.add('is-open');
   panel.style.width  = '300px';
   panel.style.height = targetH + 'px';
 
-  setTimeout(() => {
-    panel.style.width = '';
-  }, 350);
+  setTimeout(() => { panel.style.width = ''; }, 350);
 }
 
 function closePanel(panel) {
@@ -38,7 +35,6 @@ function closePanel(panel) {
 
   panel.style.width  = panel.offsetWidth  + 'px';
   panel.style.height = panel.offsetHeight + 'px';
-
   void panel.offsetWidth;
 
   panel.classList.remove('is-open');
@@ -61,7 +57,6 @@ function togglePanel(panel) {
   if (panel.classList.contains('is-open')) {
     closePanel(panel);
   } else {
-    // Mobile: close overlay when opening info panel
     if (window.innerWidth <= 768 && panel === infoPanel && overlay.classList.contains('is-open')) {
       closeOverlay();
     }
@@ -74,7 +69,7 @@ document.getElementById('info-btn').addEventListener('click',   () => togglePane
 document.getElementById('works-btn').addEventListener('click',  () => togglePanel(worksPanel));
 
 
-/* ── Load JSON data ─────────────────────────────────────── */
+/* ── Load JSON data ──────────────────────────────────────── */
 
 async function loadData() {
   try {
@@ -94,10 +89,7 @@ async function loadData() {
       a.className = 'h2';
       if (slug) {
         a.href = '#';
-        a.addEventListener('click', e => {
-          e.preventDefault();
-          openOverlay(title, slug);
-        });
+        a.addEventListener('click', e => { e.preventDefault(); openOverlay(title, slug); });
       } else {
         a.style.cursor = 'default';
       }
@@ -108,24 +100,20 @@ async function loadData() {
 
     const infoContent = document.getElementById('info-content');
     infoData.sections.forEach(section => {
-      const div = document.createElement('div');
+      const div   = document.createElement('div');
       div.className = 'info-section';
-
       const label = document.createElement('span');
       label.className = 'info-label h2';
       label.textContent = section.label;
-
       const value = document.createElement('span');
       value.className = 'info-value h2';
       value.textContent = section.content;
-
       div.appendChild(label);
       div.appendChild(value);
       infoContent.appendChild(div);
     });
-
   } catch (err) {
-    console.warn('Could not load data. Serve via a local HTTP server (python3 -m http.server 8000).', err);
+    console.warn('Could not load data. Serve via a local HTTP server.', err);
   }
 }
 
@@ -137,8 +125,7 @@ loadData();
 const overlay      = document.getElementById('project-overlay');
 const overlayClose = document.getElementById('overlay-close');
 const overlayBody  = document.getElementById('overlay-body');
-
-let currentSlug = null;
+let currentSlug    = null;
 
 async function openOverlay(title, slug) {
   if (!slug) return;
@@ -147,7 +134,6 @@ async function openOverlay(title, slug) {
   currentSlug = slug;
   overlayBody.innerHTML = '';
 
-  // Mobile: collapse info panel when opening overlay
   if (window.innerWidth <= 768 && infoPanel.classList.contains('is-open')) {
     closePanel(infoPanel);
   }
@@ -158,7 +144,6 @@ async function openOverlay(title, slug) {
   try {
     const res  = await fetch(`projects/${slug}/data.json`);
     const data = await res.json();
-
     if (slug !== currentSlug) return;
 
     const mediaElements = [];
@@ -227,7 +212,6 @@ async function openOverlay(title, slug) {
         setTimeout(() => el.classList.add('visible'), i * 80);
       });
     }, 400);
-
   } catch (err) {
     console.warn('Could not load project data:', err);
   }

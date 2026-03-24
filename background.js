@@ -11,7 +11,7 @@ let tiles = [];
 let numCols, numRows;
 
 let offsetX = 0, offsetY = 0;
-let targetX  = 0, targetY  = 0;
+let targetX = 0, targetY = 0;
 let vx = DEFAULT_VX, vy = DEFAULT_VY;
 
 let isDragging  = false;
@@ -19,12 +19,14 @@ let lastClientX, lastClientY;
 let dragVX = 0, dragVY = 0;
 
 const knownSrcs = new Set();
-const container  = document.getElementById('bg-grid');
+const container = document.getElementById('bg-grid');
+const isTouchDevice = 'ontouchstart' in window;
 
-/* ── Autoplay unlock for Safari ─────────────────────────── */
+
+/* ── Autoplay unlock for Safari ──────────────────────────── */
 
 const blockedVideos = new Set();
-let   unlocked = false;
+let unlocked = false;
 
 function unlockVideos() {
   if (unlocked) return;
@@ -40,6 +42,7 @@ function unlockVideos() {
   document.addEventListener(evt, unlockVideos, { capture: true, once: false })
 );
 
+
 /* ── Directory listing ───────────────────────────────────── */
 
 const MEDIA_EXT = /\.(mp4|webm|mov|jpg|jpeg|png|gif|webp|avif)$/i;
@@ -47,7 +50,7 @@ const VIDEO_EXT = /\.(mp4|webm|mov)$/i;
 
 async function fetchMediaList() {
   try {
-    const res  = await fetch('background/');
+    const res = await fetch('background/');
     if (!res.ok) throw new Error();
     const html = await res.text();
     const doc  = new DOMParser().parseFromString(html, 'text/html');
@@ -65,7 +68,8 @@ async function fetchMediaList() {
   }
 }
 
-/* ── Concurrency queue: max 3 loads at once ─────────────── */
+
+/* ── Concurrency queue ───────────────────────────────────── */
 
 function makeQueue(limit) {
   let active = 0;
@@ -80,6 +84,7 @@ function makeQueue(limit) {
   return fn => new Promise(resolve => { pending.push({ fn, resolve }); next(); });
 }
 const loadQueue = makeQueue(3);
+
 
 /* ── Tooltip ─────────────────────────────────────────────── */
 
@@ -107,14 +112,15 @@ function showTooltip(name, x, y) {
 function moveTooltip(x, y) { clampTooltip(x, y); }
 function hideTooltip()      { tooltip.style.display = 'none'; }
 
+
 /* ── Media element creation ──────────────────────────────── */
 
 function createMedia(tile, item) {
   return new Promise(resolve => {
     if (item.type === 'video') {
       const video = document.createElement('video');
-      video.muted    = true;
-      video.loop     = true;
+      video.muted = true;
+      video.loop = true;
       video.autoplay = true;
       video.playsInline = true;
       video.setAttribute('muted', '');
@@ -123,11 +129,7 @@ function createMedia(tile, item) {
       video.preload = 'auto';
       video.src = item.src;
       tile.appendChild(video);
-      video.play().then(() => {
-        blockedVideos.delete(video);
-      }).catch(() => {
-        blockedVideos.add(video);
-      });
+      video.play().then(() => blockedVideos.delete(video)).catch(() => blockedVideos.add(video));
       video.addEventListener('playing', resolve, { once: true });
       setTimeout(resolve, 3000);
     } else {
@@ -140,7 +142,8 @@ function createMedia(tile, item) {
   });
 }
 
-/* ── Swap a tile's media (fade out → swap → fade in) ─────── */
+
+/* ── Swap a tile's media ─────────────────────────────────── */
 
 function swapTile(tile, item) {
   tile.classList.remove('visible');
@@ -150,7 +153,8 @@ function swapTile(tile, item) {
   }, 400);
 }
 
-/* ── Build initial grid ──────────────────────────────────── */
+
+/* ── Build grid ──────────────────────────────────────────── */
 
 function buildGrid() {
   numCols = Math.ceil(window.innerWidth  / STEP) + 3;
@@ -171,9 +175,11 @@ function buildGrid() {
       const item = media[Math.floor(Math.random() * media.length)];
       const name = item.src.split('/').pop();
 
-      tile.addEventListener('mouseenter', e => { if (!isOverlayOpen()) showTooltip(name, e.clientX, e.clientY); });
-      tile.addEventListener('mousemove',  e => { if (isOverlayOpen()) hideTooltip(); else moveTooltip(e.clientX, e.clientY); });
-      tile.addEventListener('mouseleave', hideTooltip);
+      if (!isTouchDevice) {
+        tile.addEventListener('mouseenter', e => { if (!isOverlayOpen()) showTooltip(name, e.clientX, e.clientY); });
+        tile.addEventListener('mousemove',  e => { if (isOverlayOpen()) hideTooltip(); else moveTooltip(e.clientX, e.clientY); });
+        tile.addEventListener('mouseleave', hideTooltip);
+      }
 
       const promise = loadQueue(() => createMedia(tile, item));
       entries.push({ tile, promise });
@@ -185,6 +191,7 @@ function buildGrid() {
   });
 }
 
+
 /* ── Poll for new media ──────────────────────────────────── */
 
 async function checkForNewMedia() {
@@ -194,7 +201,6 @@ async function checkForNewMedia() {
     if (!newItems.length) return;
 
     newItems.forEach(item => { knownSrcs.add(item.src); media.push(item); });
-
     newItems.forEach(item => {
       [...tiles].sort(() => Math.random() - 0.5)
         .slice(0, Math.min(3, tiles.length))
@@ -205,25 +211,8 @@ async function checkForNewMedia() {
   }
 }
 
-/* ── Init ─────────────────────────────────────────────────── */
 
-async function initBackground() {
-  try {
-    const list = await fetchMediaList();
-    if (!list.length) return;
-    list.forEach(item => { knownSrcs.add(item.src); media.push(item); });
-  } catch (e) {
-    console.error('Could not load background media:', e);
-    return;
-  }
-
-  buildGrid();
-  requestAnimationFrame(tick);
-  bindDrag();
-  setInterval(checkForNewMedia, POLL_MS);
-}
-
-/* ── Animation tick ──────────────────────────────────────── */
+/* ── Animation ───────────────────────────────────────────── */
 
 function tick() {
   if (!isDragging) {
@@ -246,17 +235,15 @@ function positionTile(tile) {
   tile.style.transform = `translate(${x}px, ${y}px)`;
 }
 
+
 /* ── Drag & scroll ───────────────────────────────────────── */
 
 function isOverlayOpen() {
   return document.getElementById('project-overlay').classList.contains('is-open');
 }
 
-const isTouchDevice = 'ontouchstart' in window;
-
 function bindDrag() {
-  /* ── Mouse (desktop) ── */
-
+  /* Mouse (desktop) */
   container.addEventListener('mousedown', e => {
     if (isOverlayOpen()) return;
     isDragging = true;
@@ -281,15 +268,13 @@ function bindDrag() {
     vx = dragVX; vy = dragVY;
   });
 
-  /* ── Click to collapse panels (desktop only) ── */
-
-  container.addEventListener('click', e => {
+  /* Click to collapse (desktop) */
+  container.addEventListener('click', () => {
     if (isTouchDevice || isOverlayOpen()) return;
     if (typeof closeAll === 'function') closeAll();
   });
 
-  /* ── Wheel ── */
-
+  /* Wheel */
   container.addEventListener('wheel', e => {
     if (isOverlayOpen()) return;
     e.preventDefault();
@@ -299,20 +284,19 @@ function bindDrag() {
     vy = -e.deltaY * 0.1;
   }, { passive: false });
 
-  /* ── Touch (mobile) ── */
-
+  /* Touch (mobile) */
   container.addEventListener('touchstart', e => {
     if (isOverlayOpen()) return;
     const t = e.touches[0];
     isDragging = true;
     lastClientX = t.clientX; lastClientY = t.clientY;
     dragVX = dragVY = 0;
-    // Collapse panels on any touch (tap or drag)
     if (typeof closeAll === 'function') closeAll();
   }, { passive: true });
 
   window.addEventListener('touchmove', e => {
     if (!isDragging) return;
+    hideTooltip();
     const t = e.touches[0];
     const dx = t.clientX - lastClientX;
     const dy = t.clientY - lastClientY;
@@ -326,6 +310,25 @@ function bindDrag() {
     isDragging = false;
     vx = dragVX; vy = dragVY;
   });
+}
+
+
+/* ── Init ────────────────────────────────────────────────── */
+
+async function initBackground() {
+  try {
+    const list = await fetchMediaList();
+    if (!list.length) return;
+    list.forEach(item => { knownSrcs.add(item.src); media.push(item); });
+  } catch (e) {
+    console.error('Could not load background media:', e);
+    return;
+  }
+
+  buildGrid();
+  requestAnimationFrame(tick);
+  bindDrag();
+  setInterval(checkForNewMedia, POLL_MS);
 }
 
 initBackground();

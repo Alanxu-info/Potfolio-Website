@@ -18,10 +18,6 @@ body {
   font-size: 12px;
   line-height: 15px;
   padding: 10px;
-  padding-top: max(10px, env(safe-area-inset-top));
-  padding-bottom: max(10px, env(safe-area-inset-bottom));
-  padding-left: max(10px, env(safe-area-inset-left));
-  padding-right: max(10px, env(safe-area-inset-right));
   background-color: #ffffff;
   color: #000000;
   -webkit-tap-highlight-color: transparent;
@@ -77,7 +73,6 @@ body {
   -webkit-user-drag: none;
 }
 
-/* Hide Safari's native play-button overlay on muted background videos */
 .bg-tile video::-webkit-media-controls,
 .bg-tile video::-webkit-media-controls-panel,
 .bg-tile video::-webkit-media-controls-start-playback-button {
@@ -99,7 +94,7 @@ body {
 }
 
 
-/* ── Page & panels sit above background ──────────────────── */
+/* ── Page & panels ───────────────────────────────────────── */
 
 .page {
   position: relative;
@@ -113,9 +108,6 @@ body {
 #project-overlay {
   pointer-events: auto;
 }
-
-
-/* ── Panels ─────────────────────────────────────────────── */
 
 .panel {
   position: absolute;
@@ -135,7 +127,7 @@ body {
 }
 
 
-/* ── Label (clickable button) ────────────────────────────── */
+/* ── Label ───────────────────────────────────────────────── */
 
 .panel-label {
   padding: 5px 7px;
@@ -148,14 +140,10 @@ body {
   text-decoration: underline;
 }
 
-/* Live state: underline when the panel is open */
 #info-panel.is-open  > .panel-label,
 #works-panel.is-open > .panel-label {
   text-decoration: underline;
 }
-
-
-/* ── Info label stays right-aligned ─────────────────────── */
 
 #info-panel > .panel-label {
   text-align: right;
@@ -346,7 +334,7 @@ body {
   #project-overlay {
     width: calc(100vw - 20px);
     height: auto;
-    top: calc(max(10px, env(safe-area-inset-top)) + 32px);
+    top: 42px;
     bottom: 0;
   }
 }
