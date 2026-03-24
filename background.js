@@ -292,6 +292,7 @@ function bindDrag() {
     startClientX = t.clientX; startClientY = t.clientY;
     lastClientX = t.clientX; lastClientY = t.clientY;
     dragVX = dragVY = 0;
+    if (typeof closeAll === 'function') closeAll();
   }, { passive: true });
 
   window.addEventListener('touchmove', e => {
