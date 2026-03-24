@@ -174,6 +174,11 @@ function buildGrid() {
       tile.addEventListener('mouseenter', e => { if (!isOverlayOpen()) showTooltip(name, e.clientX, e.clientY); });
       tile.addEventListener('mousemove',  e => { if (isOverlayOpen()) hideTooltip(); else moveTooltip(e.clientX, e.clientY); });
       tile.addEventListener('mouseleave', hideTooltip);
+      tile.addEventListener('touchstart', e => {
+        if (isOverlayOpen()) return;
+        const t = e.touches[0];
+        showTooltip(name, t.clientX, t.clientY);
+      }, { passive: true });
 
       const promise = loadQueue(() => createMedia(tile, item));
       entries.push({ tile, promise });
@@ -313,6 +318,7 @@ function bindDrag() {
 
   window.addEventListener('touchmove', e => {
     if (!isDragging) return;
+    hideTooltip();
     const t = e.touches[0];
     const dx = t.clientX - lastClientX;
     const dy = t.clientY - lastClientY;
