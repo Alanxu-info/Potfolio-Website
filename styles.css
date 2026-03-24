@@ -333,10 +333,8 @@ body {
 
   #project-overlay {
     width: calc(100vw - 20px);
-    height: auto;
-    top: calc(max(10px, env(safe-area-inset-top)) + 24px + 10px);
-    bottom: 0;
   }
+
 }
 
 #overlay-body > .overlay-description {
