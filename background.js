@@ -16,7 +16,6 @@ let vx = DEFAULT_VX, vy = DEFAULT_VY;
 
 let isDragging  = false;
 let didDrag     = false;
-let startClientX, startClientY;
 let lastClientX, lastClientY;
 let dragVX = 0, dragVY = 0;
 
@@ -252,7 +251,7 @@ function bindDrag() {
   container.addEventListener('mousedown', e => {
     if (isOverlayOpen()) return;
     isDragging = true;
-    startClientX = e.clientX; startClientY = e.clientY;
+    didDrag = false;
     lastClientX = e.clientX; lastClientY = e.clientY;
     dragVX = dragVY = 0;
     container.style.cursor = 'grabbing';
@@ -262,18 +261,18 @@ function bindDrag() {
     if (!isDragging) return;
     const dx = e.clientX - lastClientX;
     const dy = e.clientY - lastClientY;
+    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) didDrag = true;
     targetX += dx; targetY += dy;
     dragVX = dx; dragVY = dy;
     lastClientX = e.clientX; lastClientY = e.clientY;
   });
 
-  window.addEventListener('mouseup', e => {
+  window.addEventListener('mouseup', () => {
     if (!isDragging) return;
     isDragging = false;
     container.style.cursor = 'grab';
     vx = dragVX; vy = dragVY;
-    const totalDist = Math.abs(e.clientX - startClientX) + Math.abs(e.clientY - startClientY);
-    if (totalDist < 10 && !isOverlayOpen() && typeof closeAll === 'function') closeAll();
+    if (!didDrag && !isOverlayOpen() && typeof closeAll === 'function') closeAll();
   });
 
   container.addEventListener('wheel', e => {
@@ -289,7 +288,7 @@ function bindDrag() {
     if (isOverlayOpen()) return;
     const t = e.touches[0];
     isDragging = true;
-    startClientX = t.clientX; startClientY = t.clientY;
+    didDrag = false;
     lastClientX = t.clientX; lastClientY = t.clientY;
     dragVX = dragVY = 0;
   }, { passive: true });
@@ -299,18 +298,17 @@ function bindDrag() {
     const t = e.touches[0];
     const dx = t.clientX - lastClientX;
     const dy = t.clientY - lastClientY;
+    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) didDrag = true;
     targetX += dx; targetY += dy;
     dragVX = dx; dragVY = dy;
     lastClientX = t.clientX; lastClientY = t.clientY;
   }, { passive: true });
 
-  window.addEventListener('touchend', e => {
+  window.addEventListener('touchend', () => {
     if (!isDragging) return;
     isDragging = false;
     vx = dragVX; vy = dragVY;
-    const t = e.changedTouches[0];
-    const totalDist = Math.abs(t.clientX - startClientX) + Math.abs(t.clientY - startClientY);
-    if (totalDist < 10 && !isOverlayOpen() && typeof closeAll === 'function') closeAll();
+    if (!didDrag && !isOverlayOpen() && typeof closeAll === 'function') closeAll();
   });
 }
 
