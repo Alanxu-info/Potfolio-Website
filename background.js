@@ -171,14 +171,11 @@ function buildGrid() {
       const item = media[Math.floor(Math.random() * media.length)];
       const name = item.src.split('/').pop();
 
-      tile.addEventListener('mouseenter', e => { if (!isOverlayOpen()) showTooltip(name, e.clientX, e.clientY); });
-      tile.addEventListener('mousemove',  e => { if (isOverlayOpen()) hideTooltip(); else moveTooltip(e.clientX, e.clientY); });
-      tile.addEventListener('mouseleave', hideTooltip);
-      tile.addEventListener('touchstart', e => {
-        if (isOverlayOpen()) return;
-        const t = e.touches[0];
-        showTooltip(name, t.clientX, t.clientY);
-      }, { passive: true });
+      if (!isTouchDevice) {
+        tile.addEventListener('mouseenter', e => { if (!isOverlayOpen()) showTooltip(name, e.clientX, e.clientY); });
+        tile.addEventListener('mousemove',  e => { if (isOverlayOpen()) hideTooltip(); else moveTooltip(e.clientX, e.clientY); });
+        tile.addEventListener('mouseleave', hideTooltip);
+      }
 
       const promise = loadQueue(() => createMedia(tile, item));
       entries.push({ tile, promise });
