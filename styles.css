@@ -119,9 +119,13 @@ body {
 
 .panel {
   position: absolute;
+  background-color: transparent;
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.panel.is-open {
   background-color: #D7D7D7;
   overflow: hidden;
-  transition: width 0.3s ease, height 0.3s ease;
 }
 
 .top-left     { top: 0;    left: 0;  }
@@ -140,6 +144,7 @@ body {
 .panel-label {
   padding: 24px 27px;
   margin: -20px;
+  background-color: #D7D7D7;
   cursor: pointer;
   user-select: none;
   white-space: nowrap;
