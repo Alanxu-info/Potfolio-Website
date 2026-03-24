@@ -16,7 +16,10 @@ function openPanel(panel) {
 
   // Put content in layout so we can measure the full height
   content.style.display = 'block';
-  const targetH = panel.id === 'info-panel' ? 500 : panel.scrollHeight;
+
+  const targetH = panel.id === 'info-panel'
+    ? window.innerHeight * 0.5
+    : panel.scrollHeight;
 
   // Pin to collapsed size — overflow:hidden keeps content invisible
   panel.style.width  = startW + 'px';
@@ -31,7 +34,8 @@ function openPanel(panel) {
 
   setTimeout(() => {
     panel.style.width  = '';
-    panel.style.height = '';
+    // Keep inline height to avoid re-triggering CSS transition
+    // (CSS value may differ slightly from computed px)
   }, 350);
 }
 
