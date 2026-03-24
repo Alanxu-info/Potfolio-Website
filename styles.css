@@ -56,15 +56,9 @@ body {
   height: 200px;
   overflow: hidden;
   opacity: 0;
-  transition: opacity 0.4s ease, transform 0.3s ease;
-  transform-origin: center center;
+  transition: opacity 0.4s ease;
   user-select: none;
   -webkit-user-select: none;
-}
-
-.bg-tile:hover {
-  transform: scale(1.15);
-  z-index: 1;
 }
 
 .bg-tile.visible {
@@ -81,6 +75,17 @@ body {
   user-select: none;
   -webkit-user-select: none;
   -webkit-user-drag: none;
+  transition: transform 0.3s ease;
+}
+
+.bg-tile:hover {
+  overflow: visible;
+  z-index: 1;
+}
+
+.bg-tile:hover video,
+.bg-tile:hover img {
+  transform: scale(1.15);
 }
 
 /* Hide Safari's native play-button overlay on muted background videos */
