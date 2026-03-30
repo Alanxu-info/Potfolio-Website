@@ -3,6 +3,24 @@
   "categories": ["Branding", "Motion", "Interaction"],
   "description": "ENCO Group Studio is a creative representative agency based in Seoul, South Korea. Through the rebrand, the studio was transformed into ENCO INTERNATIONAL LIMITED, repositioning it as an international agency focused on connecting top creative talent.",
   "media": [
+    { "type": "youtube", "src": "https://www.youtube.com/embed/nvNZTSOajgE" },
+    {
+      "type": "gallery",
+      "items": [
+        "media/Gif Gallery/Enco_GifGallery_1.gif",
+        "media/Gif Gallery/Enco_GifGallery_2.gif",
+        "media/Gif Gallery/Enco_GifGallery_3.gif",
+        "media/Gif Gallery/Enco_GifGallery_4.gif",
+        "media/Gif Gallery/Enco_GifGallery_5.gif",
+        "media/Gif Gallery/Enco_GifGallery_6.gif",
+        "media/Gif Gallery/Enco_GifGallery_7.gif",
+        "media/Gif Gallery/Enco_GifGallery_8.gif",
+        "media/Gif Gallery/Enco_GifGallery_9.gif",
+        "media/Gif Gallery/Enco_GifGallery_10.gif",
+        "media/Gif Gallery/Enco_GifGallery_11.gif",
+        "media/Gif Gallery/Enco_GifGallery_12.gif"
+      ]
+    },
     { "type": "image", "src": "media/Enco-01.jpg" },
     {
       "type": "duo",
@@ -10,14 +28,13 @@
     },
     { "type": "video", "src": "media/Enco-4.mp4" },
     { "type": "video", "src": "media/Enco-5.mp4" },
-    { "type": "video", "src": "media/Enco-6.mp4" },
     {
       "type": "duo",
-      "items": ["media/Enco-7.mp4", "media/Enco-8.mp4"]
+      "items": ["media/Enco-6.mp4", "media/Enco-7.mp4"]
     },
     {
-      "type": "duo",
-      "items": ["media/Enco-9.mp4", "media/Enco-10.mp4"]
+      "type": "trio",
+      "items": ["media/Enco-8.mp4", "media/Enco-9.mp4", "media/Enco-10.mp4"]
     },
     {
       "type": "quad",

@@ -360,6 +360,12 @@ body {
   gap: 10px;
 }
 
+.media-trio {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
 .media-quad {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -382,10 +388,6 @@ body {
 @media (max-width: 768px) {
   .media-gallery {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .media-duo {
-    grid-template-columns: 1fr;
   }
 
   .media-quad {

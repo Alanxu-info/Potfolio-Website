@@ -434,12 +434,18 @@ async function openOverlay(title, slug) {
       } else if (item.type === 'video') {
         el = document.createElement('video');
         el.src = `projects/${slug}/${item.src}`;
-        el.controls = true;
+        el.muted = true;
+        el.loop = true;
+        el.autoplay = true;
+        el.playsInline = true;
+        el.setAttribute('muted', '');
+        el.setAttribute('playsinline', '');
         el.style.width = '100%';
         el.style.display = 'block';
-      } else if (item.type === 'duo' || item.type === 'quad' || item.type === 'gallery' || item.type === 'gallery-5') {
+      } else if (item.type === 'duo' || item.type === 'trio' || item.type === 'quad' || item.type === 'gallery' || item.type === 'gallery-5') {
         el = document.createElement('div');
         if (item.type === 'duo') el.className = 'media-duo';
+        else if (item.type === 'trio') el.className = 'media-trio';
         else if (item.type === 'quad') el.className = 'media-quad';
         else if (item.type === 'gallery-5') el.className = 'media-gallery-5';
         else el.className = 'media-gallery';
@@ -448,7 +454,12 @@ async function openOverlay(title, slug) {
           if (/\.(mp4|webm|mov)$/i.test(src)) {
             child = document.createElement('video');
             child.src = `projects/${slug}/${src}`;
-            child.controls = true;
+            child.muted = true;
+            child.loop = true;
+            child.autoplay = true;
+            child.playsInline = true;
+            child.setAttribute('muted', '');
+            child.setAttribute('playsinline', '');
             child.style.width = '100%';
             child.style.display = 'block';
           } else {
