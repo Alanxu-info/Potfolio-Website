@@ -376,6 +376,14 @@ function openResumeOverlay() {
   grid.appendChild(col3);
   overlayBody.appendChild(grid);
 
+  const pdfLink = document.createElement('a');
+  pdfLink.className = 'h2 info-link';
+  pdfLink.textContent = 'PDF copy here :D';
+  pdfLink.href = 'Other Assets/AX_Resume_26.pdf';
+  pdfLink.target = '_blank';
+  pdfLink.rel = 'noopener';
+  overlayBody.appendChild(pdfLink);
+
   overlay.classList.add('is-open');
   document.getElementById('bg-grid').classList.add('blurred');
 }
