@@ -3,23 +3,56 @@
   "categories": ["Branding", "Motion", "Interaction"],
   "description": "ENCO Group Studio is a creative representative agency based in Seoul, South Korea. Through the rebrand, the studio was transformed into ENCO INTERNATIONAL LIMITED, repositioning it as an international agency focused on connecting top creative talent.",
   "media": [
-    { "type": "youtube", "src": "https://www.youtube.com/embed/nvNZTSOajgE" },
+    { "type": "image", "src": "media/Enco-01.jpg" },
     {
-      "type": "gallery",
+      "type": "duo",
+      "items": ["media/Enco-02.jpg", "media/Enco-03.jpg"]
+    },
+    { "type": "video", "src": "media/Enco-4.mp4" },
+    { "type": "video", "src": "media/Enco-5.mp4" },
+    { "type": "video", "src": "media/Enco-6.mp4" },
+    {
+      "type": "duo",
+      "items": ["media/Enco-7.mp4", "media/Enco-8.mp4"]
+    },
+    {
+      "type": "duo",
+      "items": ["media/Enco-9.mp4", "media/Enco-10.mp4"]
+    },
+    {
+      "type": "quad",
+      "items": ["media/Enco-11.jpeg", "media/Enco-12.jpeg", "media/Enco-13.jpeg", "media/Enco-14.jpeg"]
+    },
+    { "type": "image", "src": "media/Enco-15.jpeg" },
+    { "type": "image", "src": "media/Enco-16.jpeg" },
+    { "type": "image", "src": "media/Enco-17.jpg" },
+    { "type": "image", "src": "media/Enco-18.jpeg" },
+    { "type": "image", "src": "media/Enco-19.jpeg" },
+    {
+      "type": "gallery-5",
       "items": [
-        "media/Gif Gallery/Enco_GifGallery_1.gif",
-        "media/Gif Gallery/Enco_GifGallery_2.gif",
-        "media/Gif Gallery/Enco_GifGallery_3.gif",
-        "media/Gif Gallery/Enco_GifGallery_4.gif",
-        "media/Gif Gallery/Enco_GifGallery_5.gif",
-        "media/Gif Gallery/Enco_GifGallery_6.gif",
-        "media/Gif Gallery/Enco_GifGallery_7.gif",
-        "media/Gif Gallery/Enco_GifGallery_8.gif",
-        "media/Gif Gallery/Enco_GifGallery_9.gif",
-        "media/Gif Gallery/Enco_GifGallery_10.gif",
-        "media/Gif Gallery/Enco_GifGallery_11.gif",
-        "media/Gif Gallery/Enco_GifGallery_12.gif"
+        "media/Enco Posters/MORE-MORE-POSTERS-01.jpg",
+        "media/Enco Posters/MORE-MORE-POSTERS-02.jpg",
+        "media/Enco Posters/MORE-MORE-POSTERS-03.jpg",
+        "media/Enco Posters/MORE-MORE-POSTERS-04.jpg",
+        "media/Enco Posters/MORE-MORE-POSTERS-05.jpg",
+        "media/Enco Posters/MORE-MORE-POSTERS-06.jpg",
+        "media/Enco Posters/MORE-MORE-POSTERS-07.jpg",
+        "media/Enco Posters/MORE-MORE-POSTERS-08.jpg",
+        "media/Enco Posters/MORE-MORE-POSTERS-09.jpg",
+        "media/Enco Posters/MORE-MORE-POSTERS-10.jpg",
+        "media/Enco Posters/MORE-MORE-POSTERS-11.jpg",
+        "media/Enco Posters/MORE-MORE-POSTERS-12.jpg",
+        "media/Enco Posters/MORE-MORE-POSTERS-14.jpg",
+        "media/Enco Posters/MORE-MORE-POSTERS-15.jpg",
+        "media/Enco Posters/MORE-MORE-POSTERS-16.jpg",
+        "media/Enco Posters/MORE-MORE-POSTERS-17.jpg",
+        "media/Enco Posters/MORE-MORE-POSTERS-18.jpg",
+        "media/Enco Posters/MORE-MORE-POSTERS-20.jpg",
+        "media/Enco Posters/MORE-MORE-POSTERS-25.jpg",
+        "media/Enco Posters/MORE-MORE-POSTERS-28.jpg"
       ]
-    }
+    },
+    { "type": "youtube", "src": "https://www.youtube.com/embed/BbsnGPOKwZM" }
   ]
 }

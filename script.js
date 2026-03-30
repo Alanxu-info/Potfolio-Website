@@ -437,17 +437,29 @@ async function openOverlay(title, slug) {
         el.controls = true;
         el.style.width = '100%';
         el.style.display = 'block';
-      } else if (item.type === 'gallery') {
+      } else if (item.type === 'duo' || item.type === 'quad' || item.type === 'gallery' || item.type === 'gallery-5') {
         el = document.createElement('div');
-        el.className = 'media-gallery';
+        if (item.type === 'duo') el.className = 'media-duo';
+        else if (item.type === 'quad') el.className = 'media-quad';
+        else if (item.type === 'gallery-5') el.className = 'media-gallery-5';
+        else el.className = 'media-gallery';
         item.items.forEach(src => {
-          const img = document.createElement('img');
-          img.src = `projects/${slug}/${src}`;
-          img.style.width = '100%';
-          img.style.display = 'block';
-          img.classList.add('media-item');
-          el.appendChild(img);
-          mediaElements.push(img);
+          let child;
+          if (/\.(mp4|webm|mov)$/i.test(src)) {
+            child = document.createElement('video');
+            child.src = `projects/${slug}/${src}`;
+            child.controls = true;
+            child.style.width = '100%';
+            child.style.display = 'block';
+          } else {
+            child = document.createElement('img');
+            child.src = `projects/${slug}/${src}`;
+            child.style.width = '100%';
+            child.style.display = 'block';
+          }
+          child.classList.add('media-item');
+          el.appendChild(child);
+          mediaElements.push(child);
         });
       } else if (item.type === 'youtube') {
         el = document.createElement('div');

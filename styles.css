@@ -354,6 +354,24 @@ body {
   gap: 10px;
 }
 
+.media-duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.media-quad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.media-gallery-5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
 #overlay-body > .overlay-description {
   margin-bottom: 30px;
 }
@@ -364,6 +382,18 @@ body {
 @media (max-width: 768px) {
   .media-gallery {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .media-duo {
+    grid-template-columns: 1fr;
+  }
+
+  .media-quad {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .media-gallery-5 {
+    grid-template-columns: repeat(4, 1fr);
   }
 
   #project-overlay {
