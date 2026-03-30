@@ -14,20 +14,19 @@ function openPanel(panel) {
 
   content.style.display = 'block';
 
-  const targetH = panel.scrollHeight;
+  const targetH = panel.id === 'info-panel'
+    ? document.getElementById('info-content').scrollHeight + infoPanel.querySelector('.panel-label').offsetHeight
+    : panel.scrollHeight;
 
-  panel.style.width = startW + 'px';
-  if (panel.id !== 'info-panel') panel.style.height = startH + 'px';
+  panel.style.width  = startW + 'px';
+  panel.style.height = startH + 'px';
   void panel.offsetWidth;
 
   panel.classList.add('is-open');
-  panel.style.width = '300px';
-  if (panel.id !== 'info-panel') panel.style.height = targetH + 'px';
+  panel.style.width  = '300px';
+  panel.style.height = targetH + 'px';
 
-  setTimeout(() => {
-    panel.style.width = '';
-    if (panel.id !== 'info-panel') panel.style.height = '';
-  }, 350);
+  setTimeout(() => { panel.style.width = ''; }, 350);
 }
 
 function closePanel(panel) {
@@ -134,10 +133,18 @@ function buildInfoPanel() {
   ].forEach(el => linksDiv.appendChild(el));
   infoContent.appendChild(linksDiv);
 
-  // Bio image
+  // Bio image — preload so scrollHeight is accurate when panel opens
   const bioImg = document.createElement('img');
   bioImg.className = 'info-value info-bio-img';
-  bioImg.src = 'graphic design is my passion.png';
+  const bioSrc = 'graphic design is my passion.png';
+  bioImg.src = bioSrc;
+  // Disable info button until image is loaded
+  const infoBtn = document.getElementById('info-btn');
+  if (!bioImg.complete) {
+    infoBtn.style.pointerEvents = 'none';
+    bioImg.addEventListener('load',  () => { infoBtn.style.pointerEvents = ''; }, { once: true });
+    bioImg.addEventListener('error', () => { infoBtn.style.pointerEvents = ''; }, { once: true });
+  }
   addSection('Short Bio:', bioImg);
 }
 
