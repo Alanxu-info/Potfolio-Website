@@ -136,7 +136,7 @@ function buildInfoPanel() {
   // Bio image
   const bioImg = document.createElement('img');
   bioImg.className = 'info-value info-bio-img';
-  bioImg.src = 'images/graphic design is my passion.png';
+  bioImg.src = 'graphic design is my passion.png';
   addSection('Short Bio:', bioImg);
 }
 
