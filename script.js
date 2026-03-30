@@ -482,3 +482,9 @@ function closeOverlay() {
 }
 
 overlayClose.addEventListener('click', closeOverlay);
+
+document.addEventListener('click', e => {
+  if (!overlay.classList.contains('is-open')) return;
+  if (overlay.contains(e.target)) return;
+  closeOverlay();
+});
