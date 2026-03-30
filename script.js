@@ -69,16 +69,81 @@ document.getElementById('info-btn').addEventListener('click',   () => togglePane
 document.getElementById('works-btn').addEventListener('click',  () => togglePanel(worksPanel));
 
 
-/* ── Load JSON data ──────────────────────────────────────── */
+/* ── Info panel ──────────────────────────────────────────── */
 
-async function loadData() {
+function buildInfoPanel() {
+  const infoContent = document.getElementById('info-content');
+
+  function addSection(label, valueEl) {
+    const div = document.createElement('div');
+    div.className = 'info-section';
+    if (label) {
+      const lbl = document.createElement('span');
+      lbl.className = 'info-label h2';
+      lbl.textContent = label;
+      div.appendChild(lbl);
+    }
+    div.appendChild(valueEl);
+    infoContent.appendChild(div);
+  }
+
+  function textEl(content) {
+    const el = document.createElement('span');
+    el.className = 'info-value h2';
+    el.textContent = content;
+    return el;
+  }
+
+  function linkEl(text, href, onClick) {
+    const el = document.createElement('a');
+    el.className = 'info-value h2 info-link';
+    el.textContent = text;
+    if (onClick) {
+      el.href = '#';
+      el.addEventListener('click', e => { e.preventDefault(); onClick(); });
+    } else {
+      el.href = href;
+      if (!href.startsWith('mailto:')) { el.target = '_blank'; el.rel = 'noopener'; }
+    }
+    return el;
+  }
+
+  // Live clock
+  const clock = document.createElement('span');
+  clock.className = 'info-value h2';
+  function updateClock() {
+    clock.textContent = new Date().toLocaleTimeString('en-US', {
+      timeZone: 'America/Los_Angeles',
+      hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit'
+    }) + ' Los Angeles';
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+  addSection('Current Time & Location:', clock);
+
+  addSection("What I'm doing right now:", textEl('Stressing about graduation'));
+  addSection('Specialization:', textEl('Branding, Motion, Typography'));
+  addSection('Email:', linkEl('hello@alanxu.info', 'mailto:hello@alanxu.info'));
+  addSection(null, linkEl('Resume', null, openResumeOverlay));
+  addSection(null, linkEl('LinkedIn', 'https://www.linkedin.com/in/alan-xu-3093541b7/'));
+  addSection(null, linkEl('Instagram', 'https://www.instagram.com/alanxu.info/'));
+
+  // Bio image
+  const bioImg = document.createElement('img');
+  bioImg.className = 'info-value info-bio-img';
+  bioImg.src = 'images/bio.jpg';
+  addSection('Short Bio:', bioImg);
+}
+
+buildInfoPanel();
+
+
+/* ── Works list ──────────────────────────────────────────── */
+
+async function loadWorks() {
   try {
-    const [worksRes, infoRes] = await Promise.all([
-      fetch('works.json'),
-      fetch('info.json')
-    ]);
-    const worksData = await worksRes.json();
-    const infoData  = await infoRes.json();
+    const res       = await fetch('works.json');
+    const worksData = await res.json();
 
     const ul = document.createElement('ul');
     ul.className = 'project-list';
@@ -97,28 +162,12 @@ async function loadData() {
       ul.appendChild(li);
     });
     document.getElementById('works-content').appendChild(ul);
-
-    const infoContent = document.getElementById('info-content');
-    infoData.sections.forEach(section => {
-      const div   = document.createElement('div');
-      div.className = 'info-section';
-      const label = document.createElement('span');
-      label.className = 'info-label h2';
-      label.textContent = section.label;
-      const value = document.createElement('span');
-      value.className = 'info-value h2';
-      value.style.whiteSpace = 'pre-line';
-      value.textContent = section.content;
-      div.appendChild(label);
-      div.appendChild(value);
-      infoContent.appendChild(div);
-    });
   } catch (err) {
-    console.warn('Could not load data. Serve via a local HTTP server.', err);
+    console.warn('Could not load works. Serve via a local HTTP server.', err);
   }
 }
 
-loadData();
+loadWorks();
 
 
 /* ── Project overlay ─────────────────────────────────────── */
@@ -128,6 +177,14 @@ const overlayClose = document.getElementById('overlay-close');
 const overlayBody  = document.getElementById('overlay-body');
 let currentSlug    = null;
 
+function openResumeOverlay() {
+  currentSlug = '__resume__';
+  overlayBody.innerHTML = '';
+  if (window.innerWidth <= 768 && infoPanel.classList.contains('is-open')) closePanel(infoPanel);
+  overlay.classList.add('is-open');
+  document.getElementById('bg-grid').classList.add('blurred');
+}
+
 async function openOverlay(title, slug) {
   if (!slug) return;
   if (slug === currentSlug && overlay.classList.contains('is-open')) return;
@@ -135,9 +192,7 @@ async function openOverlay(title, slug) {
   currentSlug = slug;
   overlayBody.innerHTML = '';
 
-  if (window.innerWidth <= 768 && infoPanel.classList.contains('is-open')) {
-    closePanel(infoPanel);
-  }
+  if (window.innerWidth <= 768 && infoPanel.classList.contains('is-open')) closePanel(infoPanel);
 
   overlay.classList.add('is-open');
   document.getElementById('bg-grid').classList.add('blurred');
@@ -200,18 +255,13 @@ async function openOverlay(title, slug) {
         el.appendChild(iframe);
       }
       if (el) {
-        if (item.type !== 'gallery') {
-          el.classList.add('media-item');
-          mediaElements.push(el);
-        }
+        if (item.type !== 'gallery') { el.classList.add('media-item'); mediaElements.push(el); }
         overlayBody.appendChild(el);
       }
     });
 
     setTimeout(() => {
-      mediaElements.forEach((el, i) => {
-        setTimeout(() => el.classList.add('visible'), i * 80);
-      });
+      mediaElements.forEach((el, i) => setTimeout(() => el.classList.add('visible'), i * 80));
     }, 400);
   } catch (err) {
     console.warn('Could not load project data:', err);
