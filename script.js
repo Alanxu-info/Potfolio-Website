@@ -124,14 +124,19 @@ function buildInfoPanel() {
   addSection("What I'm doing right now:", textEl('Stressing about graduation'));
   addSection('Specialization:', textEl('Branding, Motion, Typography'));
   addSection('Email:', linkEl('hello@alanxu.info', 'mailto:hello@alanxu.info'));
-  addSection(null, linkEl('Resume', null, openResumeOverlay));
-  addSection(null, linkEl('LinkedIn', 'https://www.linkedin.com/in/alan-xu-3093541b7/'));
-  addSection(null, linkEl('Instagram', 'https://www.instagram.com/alanxu.info/'));
+  const linksDiv = document.createElement('div');
+  linksDiv.className = 'info-section';
+  [
+    linkEl('Resume', null, openResumeOverlay),
+    linkEl('LinkedIn', 'https://www.linkedin.com/in/alan-xu-3093541b7/'),
+    linkEl('Instagram', 'https://www.instagram.com/alanxu.info/')
+  ].forEach(el => linksDiv.appendChild(el));
+  infoContent.appendChild(linksDiv);
 
   // Bio image
   const bioImg = document.createElement('img');
   bioImg.className = 'info-value info-bio-img';
-  bioImg.src = 'images/bio.jpg';
+  bioImg.src = 'images/graphic design is my passion.png';
   addSection('Short Bio:', bioImg);
 }
 

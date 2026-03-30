@@ -195,6 +195,7 @@ body {
 }
 
 .info-link {
+  display: block;
   color: inherit;
   text-decoration: none;
 }
