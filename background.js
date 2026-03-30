@@ -199,6 +199,7 @@ function buildGrid() {
       if (slug) {
         tile.style.cursor = 'pointer';
         tile.addEventListener('click', e => {
+          if (isOverlayOpen()) return;
           e.stopPropagation();
           if (typeof openOverlay === 'function') openOverlay(null, slug);
         });

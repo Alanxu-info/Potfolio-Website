@@ -144,7 +144,7 @@ function buildInfoPanel() {
 
   const linksDiv = document.createElement('div');
   linksDiv.className = 'info-section';
-  linksDiv.appendChild(linkEl('→ A lot more info + Resume ←', null, openResumeOverlay));
+  linksDiv.appendChild(linkEl('Click here for a lot more info', null, openResumeOverlay));
   linksDiv.appendChild(document.createElement('br'));
   linksDiv.appendChild(linkEl('LinkedIn', 'https://www.linkedin.com/in/alan-xu-3093541b7/'));
   linksDiv.appendChild(linkEl('Instagram', 'https://www.instagram.com/alanxu.info/'));
@@ -397,6 +397,7 @@ async function openOverlay(title, slug) {
   overlayBody.style.overflowY = '';
 
   if (window.innerWidth <= 768 && infoPanel.classList.contains('is-open')) closePanel(infoPanel);
+  if (!worksPanel.classList.contains('is-open')) openPanel(worksPanel);
 
   overlay.classList.add('is-open');
   document.getElementById('bg-grid').classList.add('blurred');
@@ -520,5 +521,6 @@ function closeOverlay() {
 overlayClose.addEventListener('click', closeOverlay);
 
 document.getElementById('bg-grid').addEventListener('click', () => {
+  closeAll();
   if (overlay.classList.contains('is-open')) closeOverlay();
 });
