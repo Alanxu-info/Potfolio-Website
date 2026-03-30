@@ -261,7 +261,7 @@ body {
 
 .resume-row {
   display: grid;
-  grid-template-columns: 110px 140px 1fr;
+  grid-template-columns: 110px 1fr;
   gap: 0 10px;
   margin-bottom: 10px;
 }
@@ -364,10 +364,5 @@ body {
     height: auto;
     top: 42px;
     bottom: 0;
-  }
-
-  .resume-row {
-    grid-template-columns: 80px 100px 1fr;
-    gap: 0 6px;
   }
 }
