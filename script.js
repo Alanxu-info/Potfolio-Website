@@ -144,7 +144,7 @@ function buildInfoPanel() {
 
   const linksDiv = document.createElement('div');
   linksDiv.className = 'info-section';
-  linksDiv.appendChild(linkEl('A lot more info + Resume', null, openResumeOverlay));
+  linksDiv.appendChild(linkEl('→ A lot more info + Resume ←', null, openResumeOverlay));
   linksDiv.appendChild(document.createElement('br'));
   linksDiv.appendChild(linkEl('LinkedIn', 'https://www.linkedin.com/in/alan-xu-3093541b7/'));
   linksDiv.appendChild(linkEl('Instagram', 'https://www.instagram.com/alanxu.info/'));

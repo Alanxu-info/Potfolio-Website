@@ -23,6 +23,18 @@ const container = document.getElementById('bg-grid');
 const isTouchDevice = 'ontouchstart' in window;
 
 
+/* ── Map background files to project slugs ──────────────── */
+
+function bgSlug(src) {
+  const name = src.split('/').pop().toLowerCase();
+  if (name.startsWith('anomie')) return 'anomie';
+  if (name.startsWith('enco')) return 'enco';
+  if (name.startsWith('mc-') || name.startsWith('mc_')) return 'motion-connect';
+  if (name.startsWith('mocp')) return 'mocp';
+  return null;
+}
+
+
 /* ── Autoplay unlock for Safari ──────────────────────────── */
 
 const blockedVideos = new Set();
@@ -179,7 +191,16 @@ function buildGrid() {
         tile.style.cursor = 'pointer';
         tile.addEventListener('click', e => {
           e.stopPropagation();
-          const isComic = document.body.classList.toggle('comic-sans');
+          document.body.classList.toggle('comic-sans');
+        });
+      }
+
+      const slug = bgSlug(item.src);
+      if (slug) {
+        tile.style.cursor = 'pointer';
+        tile.addEventListener('click', e => {
+          e.stopPropagation();
+          if (typeof openOverlay === 'function') openOverlay(null, slug);
         });
       }
 
