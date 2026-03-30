@@ -318,13 +318,19 @@ async function initBackground() {
 }
 
 function pauseBgVideos() {
+  // Fade tiles out, then pause after fade completes
+  container.classList.add('paused');
   setTimeout(() => {
     container.querySelectorAll('video').forEach(v => v.pause());
-  }, 400);
+  }, 600);
 }
 
 function resumeBgVideos() {
+  // Resume playback first, then fade tiles back in
   container.querySelectorAll('video').forEach(v => v.play().catch(() => {}));
+  requestAnimationFrame(() => {
+    container.classList.remove('paused');
+  });
 }
 
 initBackground();

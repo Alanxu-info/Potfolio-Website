@@ -505,10 +505,10 @@ async function openOverlay(title, slug) {
 
 function closeOverlay() {
   resumeBgVideos();
+  document.getElementById('bg-grid').classList.remove('blurred');
   overlay.classList.remove('is-open');
   overlayBody.style.padding = '';
   overlayBody.style.overflowY = '';
-  document.getElementById('bg-grid').classList.remove('blurred');
   currentSlug = null;
 }
 
