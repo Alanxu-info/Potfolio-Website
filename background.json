@@ -3,9 +3,9 @@
     { "type": "video", "src": "background/ANOMIE_Globe.mp4" },
     { "type": "image", "src": "background/AX_Logo_Tteokgalbi Vr.png" },
     { "type": "video", "src": "background/ENCO-Maximo Poster.mp4" },
-    { "type": "image", "src": "background/Enco-01.5.jpg" },
-    { "type": "image", "src": "background/Enco-02.jpg" },
-    { "type": "image", "src": "background/Enco-13.jpeg" },
+    { "type": "image", "src": "background/Enco-Poster 1.jpg" },
+    { "type": "image", "src": "background/Enco-Poster 2.jpg" },
+    { "type": "image", "src": "background/Enco-Windbreaker.jpeg" },
     { "type": "video", "src": "background/Enco_GifGallery_1.mp4" },
     { "type": "video", "src": "background/Enco_GifGallery_2.mp4" },
     { "type": "video", "src": "background/Enco_GifGallery_3.mp4" },
@@ -15,6 +15,13 @@
     { "type": "video", "src": "background/Enco_GifGallery_7.mp4" },
     { "type": "video", "src": "background/Enco_GifGallery_8.mp4" },
     { "type": "video", "src": "background/Enco_GifGallery_9.mp4" },
-    { "type": "video", "src": "background/Enco_GifGallery_12.mp4" }
+    { "type": "video", "src": "background/Enco_GifGallery_12.mp4" },
+    { "type": "image", "src": "background/mocp-Design Store.jpg" },
+    { "type": "video", "src": "background/mocp-Identity.mp4" },
+    { "type": "image", "src": "background/mocp-Special Poster.png" },
+    { "type": "image", "src": "background/mocp-gallery-1.jpg" },
+    { "type": "image", "src": "background/mocp-gallery-2.jpg" },
+    { "type": "image", "src": "background/mocp-gallery-7.jpg" },
+    { "type": "image", "src": "background/mocp-gallery-10.jpg" }
   ]
 }

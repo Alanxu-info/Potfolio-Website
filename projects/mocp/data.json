@@ -2,5 +2,53 @@
   "title": "museum of contemporary photography",
   "categories": ["Branding", "Spatial"],
   "description": "The new identity system for the Museum of Contemporary Photography centers on contrast and clarity through reduction. The core challenge was designing a system that could remain neutral enough to support highly diverse photographic content, while still maintaining a distinct institutional voice. Early explorations became visually competitive with the imagery, so the system was stripped down to scale, typography, and composition as primary drivers.\n\nI developed a logo that maintains legibility across extreme size ranges, addressing applications from small captions to large-scale environmental graphics. The typographic system was built to be interchangeable, allowing flexibility across campaigns without losing consistency. A restrained, neutral palette ensures the identity never overpowers the work it presents.\n\nThe result is an adaptive identity that balances presence and restraint, designed to remain relevant over time.",
-  "media": []
+  "media": [
+    { "type": "image", "src": "media/mocp-1.png" },
+    { "type": "video", "src": "media/mocp 2.mp4" },
+    { "type": "image", "src": "media/mocp-3.png" },
+    { "type": "image", "src": "media/mocp-4.png" },
+    { "type": "image", "src": "media/mocp-5.jpg" },
+    {
+      "type": "duo",
+      "items": ["media/mocp-6.jpg", "media/mocp-7.jpg"]
+    },
+    {
+      "type": "duo",
+      "items": ["media/mocp-8.jpeg", "media/mocp-9.jpeg"]
+    },
+    { "type": "image", "src": "media/mocp-10.jpeg" },
+    { "type": "image", "src": "media/mocp-11.png" },
+    { "type": "image", "src": "media/Frames-12.png" },
+    { "type": "image", "src": "media/mocp-13.jpg" },
+    { "type": "image", "src": "media/mocp-14.jpeg" },
+    { "type": "image", "src": "media/mocp-15.jpeg" },
+    { "type": "image", "src": "media/mocp-16.jpg" },
+    { "type": "youtube", "src": "https://www.youtube.com/embed/sIWQp_CvauE?start=7" },
+    {
+      "type": "quad",
+      "items": [
+        "media/Poster gallery/mocp-gallery-1.jpg",
+        "media/Poster gallery/mocp-gallery-2.jpg",
+        "media/Poster gallery/mocp-gallery-3.jpg",
+        "media/Poster gallery/mocp-gallery-4.jpg",
+        "media/Poster gallery/mocp-gallery-5.jpg",
+        "media/Poster gallery/mocp-gallery-6.jpg",
+        "media/Poster gallery/mocp-gallery-7.jpg",
+        "media/Poster gallery/mocp-gallery-8.jpg",
+        "media/Poster gallery/mocp-gallery-9.jpg",
+        "media/Poster gallery/mocp-gallery-10.jpg",
+        "media/Poster gallery/mocp-gallery-11.jpg",
+        "media/Poster gallery/mocp-gallery-12.jpg",
+        "media/Poster gallery/mocp-gallery-13.jpg",
+        "media/Poster gallery/mocp-gallery-14.jpg",
+        "media/Poster gallery/mocp-gallery-15.jpg",
+        "media/Poster gallery/mocp-gallery-16.jpg"
+      ]
+    },
+    {
+      "type": "duo",
+      "items": ["media/mocp-17.png", "media/mocp-18.png"]
+    },
+    { "type": "youtube", "src": "https://www.youtube.com/embed/TryYwZvPksU" }
+  ]
 }
