@@ -107,6 +107,7 @@ async function loadData() {
       label.textContent = section.label;
       const value = document.createElement('span');
       value.className = 'info-value h2';
+      value.style.whiteSpace = 'pre-line';
       value.textContent = section.content;
       div.appendChild(label);
       div.appendChild(value);
