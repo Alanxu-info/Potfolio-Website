@@ -144,11 +144,10 @@ function buildInfoPanel() {
 
   const linksDiv = document.createElement('div');
   linksDiv.className = 'info-section';
-  [
-    linkEl('Resume', null, openResumeOverlay),
-    linkEl('LinkedIn', 'https://www.linkedin.com/in/alan-xu-3093541b7/'),
-    linkEl('Instagram', 'https://www.instagram.com/alanxu.info/')
-  ].forEach(el => linksDiv.appendChild(el));
+  linksDiv.appendChild(linkEl('A lot more info + Resume', null, openResumeOverlay));
+  linksDiv.appendChild(document.createElement('br'));
+  linksDiv.appendChild(linkEl('LinkedIn', 'https://www.linkedin.com/in/alan-xu-3093541b7/'));
+  linksDiv.appendChild(linkEl('Instagram', 'https://www.instagram.com/alanxu.info/'));
   infoContent.appendChild(linksDiv);
 }
 

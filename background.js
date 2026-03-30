@@ -147,10 +147,13 @@ function buildGrid() {
   numRows = Math.ceil(window.innerHeight / STEP) + 3;
 
   const entries = [];
-  const assigned = [];
-  for (let r = 0; r < numRows; r++) {
-    assigned[r] = [];
+  const totalTiles = (Math.ceil(window.innerWidth / STEP) + 3) * (Math.ceil(window.innerHeight / STEP) + 3);
+  const shuffled = [];
+  while (shuffled.length < totalTiles) {
+    const batch = [...media].sort(() => Math.random() - 0.5);
+    shuffled.push(...batch);
   }
+  let tileIdx = 0;
 
   for (let r = 0; r < numRows; r++) {
     for (let c = 0; c < numCols; c++) {
@@ -162,24 +165,7 @@ function buildGrid() {
       container.appendChild(tile);
       tiles.push(tile);
 
-      const nearby = new Set();
-      for (let dr = -5; dr <= 5; dr++) {
-        for (let dc = -5; dc <= 5; dc++) {
-          if (dr === 0 && dc === 0) continue;
-          const nr = r + dr, nc = c + dc;
-          if (nr >= 0 && nr < numRows && nc >= 0 && nc < numCols && assigned[nr][nc]) {
-            nearby.add(assigned[nr][nc]);
-          }
-        }
-      }
-      let item;
-      const available = media.filter(m => !nearby.has(m.src));
-      if (available.length) {
-        item = available[Math.floor(Math.random() * available.length)];
-      } else {
-        item = media[Math.floor(Math.random() * media.length)];
-      }
-      assigned[r][c] = item.src;
+      const item = shuffled[tileIdx++];
 
       const name = item.src.split('/').pop();
 
@@ -193,15 +179,7 @@ function buildGrid() {
         tile.style.cursor = 'pointer';
         tile.addEventListener('click', e => {
           e.stopPropagation();
-          document.body.classList.toggle('comic-sans');
-        });
-      }
-
-      if (name === 'Click me-2.mp4') {
-        tile.style.cursor = 'pointer';
-        tile.addEventListener('click', e => {
-          e.stopPropagation();
-          replaceAllMedia('background/Click me-2.mp4');
+          const isComic = document.body.classList.toggle('comic-sans');
         });
       }
 
@@ -353,65 +331,6 @@ async function initBackground() {
   requestAnimationFrame(tick);
   bindDrag();
   setInterval(checkForNewMedia, POLL_MS);
-}
-
-/* ── Easter egg: replace all media ───────────────────────── */
-
-function replaceAllMedia(videoSrc) {
-  // Replace all background tiles
-  tiles.forEach(tile => {
-    tile.innerHTML = '';
-    const video = document.createElement('video');
-    video.muted = true;
-    video.loop = true;
-    video.autoplay = true;
-    video.playsInline = true;
-    video.setAttribute('muted', '');
-    video.setAttribute('playsinline', '');
-    video.preload = 'auto';
-    video.src = videoSrc;
-    tile.appendChild(video);
-    video.play().catch(() => {});
-  });
-
-  // Replace all media on the page (overlay, panels, etc.)
-  document.querySelectorAll('img:not(#bg-grid img)').forEach(img => {
-    const video = document.createElement('video');
-    video.muted = true;
-    video.loop = true;
-    video.autoplay = true;
-    video.playsInline = true;
-    video.setAttribute('muted', '');
-    video.setAttribute('playsinline', '');
-    video.src = videoSrc;
-    video.style.cssText = img.style.cssText;
-    video.className = img.className;
-    video.style.width = img.style.width || '100%';
-    video.style.display = img.style.display || 'block';
-    img.replaceWith(video);
-    video.play().catch(() => {});
-  });
-
-  document.querySelectorAll('video:not(#bg-grid video)').forEach(v => {
-    v.src = videoSrc;
-    v.load();
-    v.play().catch(() => {});
-  });
-
-  document.querySelectorAll('iframe').forEach(iframe => {
-    const video = document.createElement('video');
-    video.muted = true;
-    video.loop = true;
-    video.autoplay = true;
-    video.playsInline = true;
-    video.setAttribute('muted', '');
-    video.setAttribute('playsinline', '');
-    video.src = videoSrc;
-    video.style.cssText = 'width:100%;height:100%;';
-    video.className = iframe.className;
-    iframe.replaceWith(video);
-    video.play().catch(() => {});
-  });
 }
 
 initBackground();
