@@ -3,13 +3,20 @@
     { "type": "video", "src": "background/ANOMIE_Globe.mp4" },
     { "type": "image", "src": "background/AX_Logo_Tteokgalbi Vr.png" },
     { "type": "video", "src": "background/ENCO-Maximo Poster.mp4" },
-    { "type": "image", "src": "background/Enco_GifGallery_10.gif" },
-    { "type": "image", "src": "background/Enco_GifGallery_11.gif" },
-    { "type": "image", "src": "background/Enco_GifGallery_12.gif" },
-    { "type": "image", "src": "background/Enco_GifGallery_2.gif" },
-    { "type": "image", "src": "background/Enco_GifGallery_4.gif" },
-    { "type": "image", "src": "background/Enco_GifGallery_5.gif" },
-    { "type": "image", "src": "background/Enco_GifGallery_6.gif" },
-    { "type": "image", "src": "background/Enco_GifGallery_8.gif" }
+    { "type": "image", "src": "background/Enco-01.5.jpg" },
+    { "type": "image", "src": "background/Enco-02.jpg" },
+    { "type": "image", "src": "background/Enco-13.jpeg" },
+    { "type": "video", "src": "background/Enco_GifGallery_1.mp4" },
+    { "type": "video", "src": "background/Enco_GifGallery_2.mp4" },
+    { "type": "video", "src": "background/Enco_GifGallery_3.mp4" },
+    { "type": "video", "src": "background/Enco_GifGallery_4.mp4" },
+    { "type": "video", "src": "background/Enco_GifGallery_5.mp4" },
+    { "type": "video", "src": "background/Enco_GifGallery_6.mp4" },
+    { "type": "video", "src": "background/Enco_GifGallery_7.mp4" },
+    { "type": "video", "src": "background/Enco_GifGallery_8.mp4" },
+    { "type": "video", "src": "background/Enco_GifGallery_9.mp4" },
+    { "type": "video", "src": "background/Enco_GifGallery_10.mp4" },
+    { "type": "video", "src": "background/Enco_GifGallery_11.mp4" },
+    { "type": "video", "src": "background/Enco_GifGallery_12.mp4" }
   ]
 }
