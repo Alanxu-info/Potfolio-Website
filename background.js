@@ -193,7 +193,15 @@ function buildGrid() {
         tile.style.cursor = 'pointer';
         tile.addEventListener('click', e => {
           e.stopPropagation();
-          const isComic = document.body.classList.toggle('comic-sans');
+          document.body.classList.toggle('comic-sans');
+        });
+      }
+
+      if (name === 'Click me-2.mp4') {
+        tile.style.cursor = 'pointer';
+        tile.addEventListener('click', e => {
+          e.stopPropagation();
+          replaceAllMedia('background/Click me-2.mp4');
         });
       }
 
@@ -345,6 +353,65 @@ async function initBackground() {
   requestAnimationFrame(tick);
   bindDrag();
   setInterval(checkForNewMedia, POLL_MS);
+}
+
+/* ── Easter egg: replace all media ───────────────────────── */
+
+function replaceAllMedia(videoSrc) {
+  // Replace all background tiles
+  tiles.forEach(tile => {
+    tile.innerHTML = '';
+    const video = document.createElement('video');
+    video.muted = true;
+    video.loop = true;
+    video.autoplay = true;
+    video.playsInline = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.preload = 'auto';
+    video.src = videoSrc;
+    tile.appendChild(video);
+    video.play().catch(() => {});
+  });
+
+  // Replace all media on the page (overlay, panels, etc.)
+  document.querySelectorAll('img:not(#bg-grid img)').forEach(img => {
+    const video = document.createElement('video');
+    video.muted = true;
+    video.loop = true;
+    video.autoplay = true;
+    video.playsInline = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.src = videoSrc;
+    video.style.cssText = img.style.cssText;
+    video.className = img.className;
+    video.style.width = img.style.width || '100%';
+    video.style.display = img.style.display || 'block';
+    img.replaceWith(video);
+    video.play().catch(() => {});
+  });
+
+  document.querySelectorAll('video:not(#bg-grid video)').forEach(v => {
+    v.src = videoSrc;
+    v.load();
+    v.play().catch(() => {});
+  });
+
+  document.querySelectorAll('iframe').forEach(iframe => {
+    const video = document.createElement('video');
+    video.muted = true;
+    video.loop = true;
+    video.autoplay = true;
+    video.playsInline = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.src = videoSrc;
+    video.style.cssText = 'width:100%;height:100%;';
+    video.className = iframe.className;
+    iframe.replaceWith(video);
+    video.play().catch(() => {});
+  });
 }
 
 initBackground();
