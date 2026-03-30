@@ -333,7 +333,7 @@ body {
     grid-template-columns: repeat(2, 1fr);
   }
 
-#project-overlay {
+  #project-overlay {
     width: calc(100vw - 20px);
     height: auto;
     top: 42px;
