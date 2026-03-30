@@ -173,6 +173,8 @@ async function loadWorks() {
         a.addEventListener('click', e => { e.preventDefault(); openOverlay(title, slug); });
       } else {
         a.style.cursor = 'default';
+        a.style.color = '#909090';
+        a.style.pointerEvents = 'none';
       }
       li.appendChild(a);
       ul.appendChild(li);
@@ -371,6 +373,16 @@ function openResumeOverlay() {
     makeCompactEntry('Indigo Design Award, Interview with Alan Xu', '2024'),
     makeCompactEntry('Graphis Blog, New Talent Elevates Their Design Game', '2024')
   ]));
+
+  const statement = document.createElement('div');
+  statement.className = 'h2 overlay-description';
+  const para1 = document.createElement('p');
+  para1.textContent = 'Finding light in what feels impossible is what drives my work. When nothing works, I step back. I take a breath and look at the problem from a different angle. There is always another perspective, another possibility.';
+  const para2 = document.createElement('p');
+  para2.textContent = 'The challenge isn\u2019t avoiding difficulty, it\u2019s looking at it from another direction to recognize the hidden opportunity. That\u2019s how I approach design. I don\u2019t settle when something feels stuck. I reframe it. I refine it. I work until confusion becomes clarity and obstacles become opportunities.';
+  statement.appendChild(para1);
+  statement.appendChild(para2);
+  overlayBody.appendChild(statement);
 
   grid.appendChild(col3);
   overlayBody.appendChild(grid);
