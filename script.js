@@ -483,7 +483,6 @@ async function openOverlay(title, slug) {
         el.appendChild(iframe);
       }
       if (el) {
-        if (item.class) el.classList.add(item.class);
         if (item.type !== 'gallery') { el.classList.add('media-item'); mediaElements.push(el); }
         overlayBody.appendChild(el);
       }

@@ -21,13 +21,14 @@
         "media/Gif Gallery/Enco_GifGallery_12.gif"
       ]
     },
-    { "type": "duo", "class": "desktop-only", "items": ["media/Enco-01.jpg", "media/Enco-01.5.jpg"] },
-    { "type": "image", "class": "mobile-only", "src": "media/Enco-01.jpg" },
+    {
+      "type": "duo",
+      "items": ["media/Enco-01.jpg", "media/Enco-01.5.jpg"]
+    },
     {
       "type": "duo",
       "items": ["media/Enco-02.jpg", "media/Enco-03.jpg"]
     },
-    { "type": "image", "class": "mobile-only", "src": "media/Enco-01.5.jpg" },
     { "type": "video", "src": "media/Enco-4.mp4" },
     { "type": "video", "src": "media/Enco-5.mp4" },
     {
