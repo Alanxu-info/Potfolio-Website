@@ -317,20 +317,4 @@ async function initBackground() {
   setInterval(checkForNewMedia, POLL_MS);
 }
 
-function pauseBgVideos() {
-  // Fade tiles out, then pause after fade completes
-  container.classList.add('paused');
-  setTimeout(() => {
-    container.querySelectorAll('video').forEach(v => v.pause());
-  }, 600);
-}
-
-function resumeBgVideos() {
-  // Resume playback first, then fade tiles back in
-  container.querySelectorAll('video').forEach(v => v.play().catch(() => {}));
-  requestAnimationFrame(() => {
-    container.classList.remove('paused');
-  });
-}
-
 initBackground();

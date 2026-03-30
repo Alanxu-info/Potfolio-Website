@@ -386,7 +386,6 @@ function openResumeOverlay() {
 
   overlay.classList.add('is-open');
   document.getElementById('bg-grid').classList.add('blurred');
-  pauseBgVideos();
 }
 
 async function openOverlay(title, slug) {
@@ -402,7 +401,6 @@ async function openOverlay(title, slug) {
 
   overlay.classList.add('is-open');
   document.getElementById('bg-grid').classList.add('blurred');
-  pauseBgVideos();
 
   try {
     const res  = await fetch(`projects/${slug}/data.json`);
@@ -504,11 +502,10 @@ async function openOverlay(title, slug) {
 }
 
 function closeOverlay() {
-  resumeBgVideos();
-  document.getElementById('bg-grid').classList.remove('blurred');
   overlay.classList.remove('is-open');
   overlayBody.style.padding = '';
   overlayBody.style.overflowY = '';
+  document.getElementById('bg-grid').classList.remove('blurred');
   currentSlug = null;
 }
 
