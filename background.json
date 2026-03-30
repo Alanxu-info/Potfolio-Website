@@ -1,6 +1,15 @@
 {
   "media": [
-    { "type": "video", "src": "background/ANOMIE_Gloab.mp4" },
-    { "type": "image", "src": "background/visualelectric-1772446132070.png" }
+    { "type": "video", "src": "background/ANOMIE_Globe.mp4" },
+    { "type": "image", "src": "background/AX_Logo_Tteokgalbi Vr.png" },
+    { "type": "video", "src": "background/ENCO-Maximo Poster.mp4" },
+    { "type": "image", "src": "background/Enco_GifGallery_10.gif" },
+    { "type": "image", "src": "background/Enco_GifGallery_11.gif" },
+    { "type": "image", "src": "background/Enco_GifGallery_12.gif" },
+    { "type": "image", "src": "background/Enco_GifGallery_2.gif" },
+    { "type": "image", "src": "background/Enco_GifGallery_4.gif" },
+    { "type": "image", "src": "background/Enco_GifGallery_5.gif" },
+    { "type": "image", "src": "background/Enco_GifGallery_6.gif" },
+    { "type": "image", "src": "background/Enco_GifGallery_8.gif" }
   ]
 }

@@ -49,23 +49,9 @@ const MEDIA_EXT = /\.(mp4|webm|mov|jpg|jpeg|png|gif|webp|avif)$/i;
 const VIDEO_EXT = /\.(mp4|webm|mov)$/i;
 
 async function fetchMediaList() {
-  try {
-    const res = await fetch('background/');
-    if (!res.ok) throw new Error();
-    const html = await res.text();
-    const doc  = new DOMParser().parseFromString(html, 'text/html');
-    return [...doc.querySelectorAll('a[href]')]
-      .map(a => a.getAttribute('href'))
-      .filter(href => MEDIA_EXT.test(href))
-      .map(filename => ({
-        type: VIDEO_EXT.test(filename) ? 'video' : 'image',
-        src:  'background/' + filename
-      }));
-  } catch {
-    const res  = await fetch('background.json');
-    const data = await res.json();
-    return data.media;
-  }
+  const res  = await fetch('background.json');
+  const data = await res.json();
+  return data.media;
 }
 
 
