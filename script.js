@@ -224,9 +224,9 @@ function openResumeOverlay() {
     return div;
   }
 
-  function makeAwardEntry(text, date) {
+  function makeCompactEntry(text, date) {
     const div = document.createElement('div');
-    div.className = 'resume-entry';
+    div.className = 'resume-entry resume-entry-compact';
     const t = document.createElement('span');
     t.className = 'h2';
     t.textContent = text + ' ';
@@ -235,20 +235,6 @@ function openResumeOverlay() {
     d.className = 'caption';
     d.textContent = date;
     div.appendChild(d);
-    return div;
-  }
-
-  function makeSimpleEntry(date, text) {
-    const div = document.createElement('div');
-    div.className = 'resume-entry';
-    const d = document.createElement('span');
-    d.className = 'h2';
-    d.textContent = date + ', ';
-    div.appendChild(d);
-    const t = document.createElement('span');
-    t.className = 'h2';
-    t.textContent = text;
-    div.appendChild(t);
     return div;
   }
 
@@ -355,37 +341,36 @@ function openResumeOverlay() {
   const col3 = document.createElement('div');
 
   col3.appendChild(makeSection('Awards & Recognition', [
-    makeAwardEntry('Communication Arts, Typography Annual', '2025'),
-    makeAwardEntry('Communication Arts, Design Annual x2', '2024'),
-    makeAwardEntry('World\u2019s Best Typography 45, Judge\u2019s Choice', '2024'),
-    makeAwardEntry('TDC Young Ones, Top 3 + Winner Brand & Identity + Winner Motion', '2024'),
-    makeAwardEntry('ADC Young Ones, Merit', '2024'),
-    makeAwardEntry('C2A, Best of Best in Animation + Winner Brand Identity', '2024'),
-    makeAwardEntry('Kyoto Global Design Awards, Visual Winner x3', '2024'),
-    makeAwardEntry('Core77, Brand and Identity Student Winner + Communication Design Student Notable', '2024\u201323'),
-    makeAwardEntry('Graphis New Talent, Platinum + Gold x2 + Silver', '2024\u201323'),
-    makeAwardEntry('DNA Paris, Communication + Branding Communication + Typography x2', '2024'),
-    makeAwardEntry('Design MasterPrize, Best of Best Brand Identity', '2024'),
-    makeAwardEntry('IDA, Bronze', '2024'),
-    makeAwardEntry('Indigo Design Award, Gold Computer Animation + Silver Branding x2', '2024'),
-    makeAwardEntry('Cidea Design Award, NewStar Award + Design Award', '2024'),
-    makeAwardEntry('World Brand Design Society, Bronze', '2024')
+    makeCompactEntry('Communication Arts, Typography Annual + Design Annual x2', '2025\u201324'),
+    makeCompactEntry('World\u2019s Best Typography 45, Judge\u2019s Choice', '2024'),
+    makeCompactEntry('TDC Young Ones, Top 3 + Winner Brand & Identity + Winner Motion', '2024'),
+    makeCompactEntry('ADC Young Ones, Merit', '2024'),
+    makeCompactEntry('C2A, Best of Best in Animation + Winner Brand Identity', '2024'),
+    makeCompactEntry('Kyoto Global Design Awards, Visual Winner x3', '2024'),
+    makeCompactEntry('Core77, Brand and Identity Student Winner + Communication Design Student Notable', '2024\u201323'),
+    makeCompactEntry('Graphis New Talent, Platinum + Gold x2 + Silver', '2024\u201323'),
+    makeCompactEntry('DNA Paris, Communication + Branding Communication + Typography x2', '2024'),
+    makeCompactEntry('Design MasterPrize, Best of Best Brand Identity', '2024'),
+    makeCompactEntry('IDA, Bronze', '2024'),
+    makeCompactEntry('Indigo Design Award, Gold Computer Animation + Silver Branding x2', '2024'),
+    makeCompactEntry('Cidea Design Award, NewStar Award + Design Award', '2024'),
+    makeCompactEntry('World Brand Design Society, Bronze', '2024')
   ]));
 
   col3.appendChild(makeSection('Exhibition', [
-    makeSimpleEntry('2026', 'Fork Unfolding #3, Seoul Korea'),
-    makeSimpleEntry('2024\u201325', 'TDC70 Traveling Exhibition, ENCO'),
-    makeSimpleEntry('2024', 'HMCT Gallery, Another Specimen Poster, LA'),
-    makeSimpleEntry('2021\u201322', 'ArtCenter Student Gallery, SU21 Poster, LA')
+    makeCompactEntry('Fork Unfolding #3, Seoul Korea', '2026'),
+    makeCompactEntry('TDC70 Traveling Exhibition', '2024\u201325'),
+    makeCompactEntry('HMCT Gallery, LA', '2024'),
+    makeCompactEntry('ArtCenter Student Gallery, LA', '2021\u201322')
   ]));
 
   col3.appendChild(makeSection('Press', [
-    makeSimpleEntry('2025', 'Bold Journey, Meet Alan Xu'),
-    makeSimpleEntry('2025\u201326', 'ArtCenter View Book'),
-    makeSimpleEntry('2024', 'Graphic Design USA, Student to Watch'),
-    makeSimpleEntry('2024', 'Graphis Blog, ArtCenter Student\u2019s Platinum Brand Play'),
-    makeSimpleEntry('2024', 'Indigo Design Award Interview with Alan Xu'),
-    makeSimpleEntry('2024', 'Graphis Blog, New Talent Elevates Their Design Game')
+    makeCompactEntry('Bold Journey, Meet Alan Xu', '2025'),
+    makeCompactEntry('ArtCenter View Book', '2025\u201326'),
+    makeCompactEntry('Graphic Design USA, Student to Watch', '2024'),
+    makeCompactEntry('Graphis Blog, ArtCenter Student\u2019s Platinum Brand Play', '2024'),
+    makeCompactEntry('Indigo Design Award, Interview with Alan Xu', '2024'),
+    makeCompactEntry('Graphis Blog, New Talent Elevates Their Design Game', '2024')
   ]));
 
   grid.appendChild(col3);

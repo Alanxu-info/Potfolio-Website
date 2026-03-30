@@ -258,7 +258,7 @@ body {
 }
 
 .resume-col-section {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .resume-col-section:last-child {
@@ -270,10 +270,14 @@ body {
 }
 
 .resume-entry {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .resume-entry:last-child {
+  margin-bottom: 0;
+}
+
+.resume-entry-compact {
   margin-bottom: 0;
 }
 
