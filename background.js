@@ -167,6 +167,16 @@ function buildGrid() {
         tile.addEventListener('mouseleave', hideTooltip);
       }
 
+      if (name === 'Click me-1.jpg') {
+        tile.style.cursor = 'pointer';
+        tile.addEventListener('click', e => {
+          e.stopPropagation();
+          document.body.style.fontFamily = document.body.style.fontFamily === '"Comic Sans MS", cursive'
+            ? "'Inter', sans-serif"
+            : '"Comic Sans MS", cursive';
+        });
+      }
+
       const promise = loadQueue(() => createMedia(tile, item));
       entries.push({ tile, promise });
     }

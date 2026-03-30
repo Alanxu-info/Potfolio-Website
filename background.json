@@ -1,7 +1,18 @@
 {
   "media": [
     { "type": "video", "src": "background/ANOMIE_Globe.mp4" },
+    { "type": "image", "src": "background/AX_Logo_Orange.png" },
     { "type": "image", "src": "background/AX_Logo_Tteokgalbi Vr.png" },
+    { "type": "image", "src": "background/AX_Logo_very very vey big banana.png" },
+    { "type": "video", "src": "background/Anomie-100.mp4" },
+    { "type": "video", "src": "background/Anomie-Icon Grid.mp4" },
+    { "type": "video", "src": "background/Anomie-Icon Mash.mp4" },
+    { "type": "video", "src": "background/Anomie-Invitation.mp4" },
+    { "type": "video", "src": "background/Anomie-Logo Animation.mp4" },
+    { "type": "video", "src": "background/Anomie-Tagline.mp4" },
+    { "type": "video", "src": "background/Anomie-Type.mp4" },
+    { "type": "video", "src": "background/Anomie-ZIne Slides.mp4" },
+    { "type": "image", "src": "background/Click me-1.jpg" },
     { "type": "video", "src": "background/ENCO-Maximo Poster.mp4" },
     { "type": "image", "src": "background/Enco-Poster 1.jpg" },
     { "type": "image", "src": "background/Enco-Poster 2.jpg" },

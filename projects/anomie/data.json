@@ -1,0 +1,18 @@
+{
+  "title": "ANOMIE",
+  "categories": ["Print", "Branding", "Motion"],
+  "description": "To be added",
+  "media": [
+    { "type": "video", "src": "media/Anomie-1.mp4" },
+    { "type": "video", "src": "media/Anomie-2.mp4" },
+    { "type": "video", "src": "media/Anomie-3.mp4" },
+    { "type": "video", "src": "media/Anomie-4.mp4" },
+    { "type": "video", "src": "media/Anomie-5.mp4" },
+    { "type": "video", "src": "media/Anomie-6.mp4" },
+    { "type": "video", "src": "media/Anomie-7.mp4" },
+    { "type": "video", "src": "media/Anomie-8.mp4" },
+    { "type": "video", "src": "media/Anomie-9.mp4" },
+    { "type": "video", "src": "media/Anomie-10.mp4" },
+    { "type": "image", "src": "media/Anomie-11.jpg" }
+  ]
+}
