@@ -200,7 +200,7 @@ function openResumeOverlay() {
   if (window.innerWidth <= 768 && infoPanel.classList.contains('is-open')) closePanel(infoPanel);
 
   const img = document.createElement('img');
-  img.src = 'Other Assets/AX_Resume_26.jpg';
+  img.src = 'Other Assets/AX_Resume_26.png';
   img.style.cssText = 'width:100%;display:block;';
   overlayBody.appendChild(img);
 
