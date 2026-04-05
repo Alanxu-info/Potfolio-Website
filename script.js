@@ -198,6 +198,7 @@ const overlay      = document.getElementById('project-overlay');
 const overlayClose = document.getElementById('overlay-close');
 const overlayBody  = document.getElementById('overlay-body');
 let currentSlug    = null;
+let overlayObserver = null;
 
 function openResumeOverlay() {
   currentSlug = '__resume__';
@@ -520,6 +521,7 @@ async function openOverlay(title, slug) {
           const videoId = item.src.split('/embed/')[1]?.split('?')[0] || '';
           iframe.src = item.src + sep + 'autoplay=1&mute=1&playsinline=1&loop=1&controls=0&playlist=' + videoId;
           iframe.allow = 'autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+          iframe._autoplay = true;
         } else {
           iframe.src = item.src + sep + 'autoplay=0';
           iframe.allow = 'accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
@@ -537,12 +539,36 @@ async function openOverlay(title, slug) {
     setTimeout(() => {
       mediaElements.forEach((el, i) => setTimeout(() => el.classList.add('visible'), i * 80));
     }, 400);
+
+    // Pause videos/iframes when scrolled out of view (skip autoplay embeds)
+    if (overlayObserver) overlayObserver.disconnect();
+    overlayObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const el = entry.target;
+        if (entry.isIntersecting) {
+          if (el.tagName === 'VIDEO') el.play().catch(() => {});
+          else if (el.tagName === 'IFRAME' && !el._autoplay) {
+            el.src = el.src.replace('autoplay=0', 'autoplay=1');
+          }
+        } else {
+          if (el.tagName === 'VIDEO') el.pause();
+          else if (el.tagName === 'IFRAME' && !el._autoplay) {
+            el.src = el.src.replace('autoplay=1', 'autoplay=0');
+          }
+        }
+      });
+    }, { root: overlayBody, threshold: 0.1 });
+
+    overlayBody.querySelectorAll('video').forEach(v => overlayObserver.observe(v));
+    overlayBody.querySelectorAll('iframe').forEach(f => overlayObserver.observe(f));
+
   } catch (err) {
     console.warn('Could not load project data:', err);
   }
 }
 
 function closeOverlay() {
+  if (overlayObserver) { overlayObserver.disconnect(); overlayObserver = null; }
   overlay.classList.remove('is-open');
   overlayBody.style.padding = '';
   overlayBody.style.overflowY = '';
