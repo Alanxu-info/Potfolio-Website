@@ -140,7 +140,11 @@ function buildInfoPanel() {
     bioImg.addEventListener('load',  () => { infoBtn.style.pointerEvents = ''; }, { once: true });
     bioImg.addEventListener('error', () => { infoBtn.style.pointerEvents = ''; }, { once: true });
   }
+  bioImg.style.cursor = 'pointer';
+  bioImg.addEventListener('click', openResumeOverlay);
   addSection('Short Bio:', bioImg);
+  // Remove gap between bio image and links
+  bioImg.parentElement.style.marginBottom = '0';
 
   const linksDiv = document.createElement('div');
   linksDiv.className = 'info-section';
@@ -380,6 +384,7 @@ function openResumeOverlay() {
   para1.textContent = 'Finding light in what feels impossible is what drives my work. When nothing works, I step back. I take a breath and look at the problem from a different angle. There is always another perspective, another possibility.';
   const para2 = document.createElement('p');
   para2.textContent = 'The challenge isn\u2019t avoiding difficulty, it\u2019s looking at it from another direction to recognize the hidden opportunity. That\u2019s how I approach design. I don\u2019t settle when something feels stuck. I reframe it. I refine it. I work until confusion becomes clarity and obstacles become opportunities.';
+  para1.style.marginBottom = '10px';
   statement.appendChild(para1);
   statement.appendChild(para2);
   overlayBody.appendChild(statement);
