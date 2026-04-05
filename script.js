@@ -544,13 +544,8 @@ async function openOverlay(title, slug) {
     if (overlayObserver) overlayObserver.disconnect();
     overlayObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        const el = entry.target;
-        if (entry.isIntersecting) {
-          if (el.tagName === 'VIDEO') el.play().catch(() => {});
-          else if (el.tagName === 'IFRAME' && !el._autoplay) {
-            el.src = el.src.replace('autoplay=0', 'autoplay=1');
-          }
-        } else {
+        if (!entry.isIntersecting) {
+          const el = entry.target;
           if (el.tagName === 'VIDEO') el.pause();
           else if (el.tagName === 'IFRAME' && !el._autoplay) {
             el.src = el.src.replace('autoplay=1', 'autoplay=0');
@@ -569,6 +564,8 @@ async function openOverlay(title, slug) {
 
 function closeOverlay() {
   if (overlayObserver) { overlayObserver.disconnect(); overlayObserver = null; }
+  overlayBody.querySelectorAll('video').forEach(v => v.pause());
+  overlayBody.querySelectorAll('iframe').forEach(f => { f.src = f.src; });
   overlay.classList.remove('is-open');
   overlayBody.style.padding = '';
   overlayBody.style.overflowY = '';
