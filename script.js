@@ -410,7 +410,9 @@ async function openOverlay(title, slug) {
   if (slug === currentSlug && overlay.classList.contains('is-open')) return;
 
   currentSlug = slug;
+  if (overlayObserver) { overlayObserver.disconnect(); overlayObserver = null; }
   overlayBody.innerHTML = '';
+  overlayBody.scrollTop = 0;
   overlayBody.style.padding = '';
   overlayBody.style.overflowY = '';
 
@@ -540,8 +542,7 @@ async function openOverlay(title, slug) {
       mediaElements.forEach((el, i) => setTimeout(() => el.classList.add('visible'), i * 80));
     }, 400);
 
-    // Pause videos/iframes when scrolled out of view (skip autoplay embeds)
-    if (overlayObserver) overlayObserver.disconnect();
+    // Pause videos/iframes when scrolled out of view (only pause, never auto-resume)
     overlayObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) {
@@ -555,7 +556,7 @@ async function openOverlay(title, slug) {
     }, { root: overlayBody, threshold: 0.1 });
 
     overlayBody.querySelectorAll('video').forEach(v => overlayObserver.observe(v));
-    overlayBody.querySelectorAll('iframe').forEach(f => overlayObserver.observe(f));
+    overlayBody.querySelectorAll('iframe:not([data-autoplay])').forEach(f => overlayObserver.observe(f));
 
   } catch (err) {
     console.warn('Could not load project data:', err);
