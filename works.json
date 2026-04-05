@@ -1,14 +1,14 @@
 {
   "projects": [
-    { "title": "ENCO INTERNATIONAL LIMITED", "slug": "enco" },
-    { "title": "LA28 (WIP)", "slug": null },
-    { "title": "VCT24 SUPERNOVA", "slug": null },
-    { "title": "museum of contemporary photography", "slug": "mocp" },
-    { "title": "ANOMIE", "slug": "anomie" },
+    { "title": "Enco International Limited", "slug": "enco" },
+    { "title": "La28 (Wip)", "slug": null },
+    { "title": "Vct24 Supernova", "slug": null },
+    { "title": "Museum Of Contemporary Photography", "slug": "mocp" },
+    { "title": "Anomie", "slug": "anomie" },
     { "title": "Motion Connect", "slug": "motion-connect" },
-    { "title": "MADE_LIGHT", "slug": null },
-    { "title": "MUSTARD", "slug": null },
-    { "title": "NeuEra32", "slug": null },
+    { "title": "Made_Light", "slug": null },
+    { "title": "Mustard", "slug": null },
+    { "title": "Neuera32", "slug": null },
     { "title": "Fork Micro Residency Outputs", "slug": null }
   ]
 }
