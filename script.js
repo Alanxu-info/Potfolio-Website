@@ -441,6 +441,27 @@ async function openOverlay(title, slug) {
     });
     overlayBody.appendChild(desc);
 
+    if (data.details) {
+      const detailsGrid = document.createElement('div');
+      detailsGrid.className = 'resume-columns';
+      detailsGrid.style.marginBottom = '30px';
+      data.details.forEach(col => {
+        const colDiv = document.createElement('div');
+        const heading = document.createElement('div');
+        heading.className = 'h2 resume-col-section-title';
+        heading.textContent = col.heading;
+        colDiv.appendChild(heading);
+        col.items.forEach(item => {
+          const line = document.createElement('div');
+          line.className = 'h2';
+          line.textContent = item;
+          colDiv.appendChild(line);
+        });
+        detailsGrid.appendChild(colDiv);
+      });
+      overlayBody.appendChild(detailsGrid);
+    }
+
     data.media.forEach(item => {
       let el;
       if (item.type === 'image') {
@@ -498,7 +519,7 @@ async function openOverlay(title, slug) {
         const sep = item.src.includes('?') ? '&' : '?';
         if (item.type === 'youtube-autoplay') {
           const videoId = item.src.split('/embed/')[1]?.split('?')[0] || '';
-          iframe.src = item.src + sep + 'autoplay=1&mute=1&playsinline=1&loop=1&playlist=' + videoId;
+          iframe.src = item.src + sep + 'autoplay=1&mute=1&playsinline=1&loop=1&controls=0&playlist=' + videoId;
           iframe.allow = 'autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
         } else {
           iframe.src = item.src + sep + 'autoplay=0';
