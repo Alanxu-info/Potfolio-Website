@@ -37,7 +37,7 @@
     { "type": "image", "src": "background/mocp-gallery-2.jpg" },
     { "type": "image", "src": "background/mocp-gallery-7.jpg" },
     { "type": "image", "src": "background/mocp-gallery-10.jpg" },
-    { "type": "video", "src": "background/Easter Eggs/AMONGUS.mp4" },
+    { "type": "image", "src": "background/Easter Eggs/AMONGUS.jpg" },
     { "type": "image", "src": "background/Easter Eggs/Click me-1.jpg" }
   ]
 }

@@ -202,11 +202,11 @@ function buildGrid() {
         });
       }
 
-      if (name === 'AMONGUS.mp4') {
+      if (name === 'AMONGUS.jpg') {
         tile.style.cursor = 'pointer';
         tile.addEventListener('click', e => {
           e.stopPropagation();
-          showAmongus(item.src);
+          showAmongus('background/Easter Eggs/AMONGUS.mp4');
           // Replace tile with a random regular media
           const reg = media.filter(m => !m.src.includes('Easter Eggs/'));
           const replacement = reg[Math.floor(Math.random() * reg.length)];
@@ -397,11 +397,11 @@ function showAmongus(src) {
   video.playsInline = true;
   video.setAttribute('muted', '');
   video.setAttribute('playsinline', '');
-  video.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10000;max-width:80vw;max-height:80vh;pointer-events:none;';
+  const scale = window.innerWidth <= 768 ? 1 : 2;
+  video.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(' + scale + ');z-index:10000;max-width:80vw;max-height:80vh;pointer-events:none;';
   document.body.appendChild(video);
   video.play().catch(() => {});
   video.addEventListener('ended', () => video.remove(), { once: true });
-  // Fallback removal in case ended doesn't fire
   setTimeout(() => { if (video.parentNode) video.remove(); }, 15000);
 }
 

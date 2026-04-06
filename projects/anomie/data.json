@@ -18,7 +18,7 @@
       "items": ["media/Anomie-7.mp4", "media/Anomie-8.mp4"]
     },
     { "type": "video", "src": "media/Anomie-9.mp4" },
-    { "type": "iframe", "src": "https://publuu.com/flip-book/1083730/2418261/page/1?embed&transparent", "height": "380px", "allow": "clipboard-write; autoplay; fullscreen" },
+    { "type": "iframe", "src": "https://publuu.com/flip-book/1083730/2418261/page/2?embed&transparent", "height": "600px", "allow": "clipboard-write; autoplay; fullscreen" },
     { "type": "image", "src": "media/Anomie_GS_1.jpg" },
     {
       "type": "duo",
