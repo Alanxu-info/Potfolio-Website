@@ -72,6 +72,7 @@ function togglePanel(panel) {
 document.getElementById('alan-xu-btn').addEventListener('click', () => { closeAll(); closeOverlay(); });
 document.getElementById('info-btn').addEventListener('click',   () => togglePanel(infoPanel));
 document.getElementById('works-btn').addEventListener('click',  () => togglePanel(worksPanel));
+document.getElementById('archive-btn').addEventListener('click', showArchivePanel);
 
 
 /* ── Info panel ──────────────────────────────────────────── */
@@ -184,18 +185,13 @@ async function loadWorks() {
     const ul = document.createElement('ul');
     ul.className = 'project-list';
     worksData.projects.forEach(({ title, slug }) => {
+      if (!slug) return;
       const li = document.createElement('li');
       const a  = document.createElement('a');
       a.textContent = title;
       a.className = 'h2';
-      if (slug) {
-        a.href = '#';
-        a.addEventListener('click', e => { e.preventDefault(); openOverlay(title, slug); });
-      } else {
-        a.style.cursor = 'default';
-        a.style.color = '#909090';
-        a.style.pointerEvents = 'none';
-      }
+      a.href = '#';
+      a.addEventListener('click', e => { e.preventDefault(); openOverlay(title, slug); });
       li.appendChild(a);
       ul.appendChild(li);
     });
@@ -206,6 +202,38 @@ async function loadWorks() {
 }
 
 loadWorks();
+
+
+/* ── Archive lightbox ────────────────────────────────────── */
+
+function showArchivePanel() {
+  const existing = document.getElementById('archive-backdrop');
+  if (existing) existing.remove();
+
+  const backdrop = document.createElement('div');
+  backdrop.id = 'archive-backdrop';
+  backdrop.style.cssText = 'position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;cursor:pointer;';
+
+  const panel = document.createElement('div');
+  panel.style.cssText = 'width:500px;max-width:90vw;height:250px;background:#D7D7D7;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;';
+
+  const text = document.createElement('span');
+  text.className = 'h2';
+  text.innerHTML = 'Sorry this bad boy isn\'t ready yet.<br><br>Come back later.';
+  panel.appendChild(text);
+  backdrop.appendChild(panel);
+
+  document.getElementById('bg-grid').classList.add('blurred');
+
+  backdrop.addEventListener('click', () => {
+    backdrop.remove();
+    if (!document.getElementById('project-overlay').classList.contains('is-open')) {
+      document.getElementById('bg-grid').classList.remove('blurred');
+    }
+  }, { once: true });
+
+  document.body.appendChild(backdrop);
+}
 
 
 /* ── Project overlay ─────────────────────────────────────── */
