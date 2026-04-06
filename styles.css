@@ -387,6 +387,12 @@ body.comic-sans * {
   gap: 10px;
 }
 
+.media-gallery-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
 .media-gallery-5 {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -397,6 +403,11 @@ body.comic-sans * {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   gap: 10px;
+}
+
+.media-caption {
+  margin: 4px 0 0 0;
+  color: #909090;
 }
 
 #overlay-body > .overlay-description {
@@ -431,6 +442,10 @@ body.comic-sans * {
   }
 
   .media-duo {
+    grid-template-columns: 1fr;
+  }
+
+  .media-duo-mobile-solo {
     grid-template-columns: 1fr;
   }
 

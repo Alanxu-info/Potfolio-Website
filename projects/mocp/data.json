@@ -9,23 +9,21 @@
       "type": "duo",
       "items": ["media/mocp-3.png", "media/mocp-4.png"]
     },
-    { "type": "image", "src": "media/mocp-5.jpg" },
-    {
-      "type": "quad",
-      "items": ["media/mocp-6.jpg", "media/mocp-7.jpg", "media/mocp-8.jpeg", "media/mocp-9.jpeg"]
-    },
     {
       "type": "duo",
-      "items": ["media/mocp-10.jpeg", "media/mocp-11.png"]
+      "items": ["media/mocp-5.jpg", "media/mocp-6.jpg"]
     },
+    {
+      "type": "duo-mobile-solo",
+      "items": ["media/mocp-7.jpg", "media/mocp-8.jpeg"]
+    },
+    { "type": "image", "src": "media/mocp-9.jpeg" },
+    { "type": "image", "src": "media/mocp-10.jpeg" },
+    { "type": "image", "src": "media/mocp-11.png" },
     { "type": "image", "src": "media/Frames-12.png" },
     { "type": "image", "src": "media/mocp-13.jpg" },
-    { "type": "image", "src": "media/mocp-14.jpeg" },
-    { "type": "image", "src": "media/mocp-15.jpeg" },
-    { "type": "image", "src": "media/mocp-16.jpg" },
-    { "type": "youtube", "src": "https://www.youtube.com/embed/sIWQp_CvauE?start=7" },
     {
-      "type": "gallery-8",
+      "type": "gallery-4",
       "items": [
         "media/Poster gallery/mocp-gallery-1.jpg",
         "media/Poster gallery/mocp-gallery-2.jpg",
@@ -46,9 +44,9 @@
       ]
     },
     {
-      "type": "duo",
-      "items": ["media/mocp-17.png", "media/mocp-18.png"]
+      "type": "duo-mobile-solo",
+      "items": ["media/mocp-14.jpeg", "media/mocp-15.jpeg"]
     },
-    { "type": "youtube", "src": "https://www.youtube.com/embed/TryYwZvPksU" }
+    { "type": "youtube", "src": "https://www.youtube.com/embed/TryYwZvPksU", "caption": "Museum of Contemporary Photography Main Hall Installation" }
   ]
 }
