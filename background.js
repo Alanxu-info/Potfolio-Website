@@ -57,9 +57,6 @@ function unlockVideos() {
 
 /* ── Directory listing ───────────────────────────────────── */
 
-const MEDIA_EXT = /\.(mp4|webm|mov|jpg|jpeg|png|gif|webp|avif)$/i;
-const VIDEO_EXT = /\.(mp4|webm|mov)$/i;
-
 async function fetchMediaList() {
   const res  = await fetch('background.json');
   const data = await res.json();
@@ -81,6 +78,7 @@ function makeQueue(limit) {
   }
   return fn => new Promise(resolve => { pending.push({ fn, resolve }); next(); });
 }
+
 const loadQueue = makeQueue(3);
 
 
@@ -158,13 +156,13 @@ function buildGrid() {
   numCols = Math.ceil(window.innerWidth  / STEP) + 3;
   numRows = Math.ceil(window.innerHeight / STEP) + 3;
 
-  const entries = [];
-  const totalTiles = (Math.ceil(window.innerWidth / STEP) + 3) * (Math.ceil(window.innerHeight / STEP) + 3);
   const shuffled = [];
+  const totalTiles = numCols * numRows;
   while (shuffled.length < totalTiles) {
-    const batch = [...media].sort(() => Math.random() - 0.5);
-    shuffled.push(...batch);
+    shuffled.push(...[...media].sort(() => Math.random() - 0.5));
   }
+
+  const entries = [];
   let tileIdx = 0;
 
   for (let r = 0; r < numRows; r++) {
@@ -178,7 +176,6 @@ function buildGrid() {
       tiles.push(tile);
 
       const item = shuffled[tileIdx++];
-
       const name = item.src.split('/').pop();
 
       if (!isTouchDevice) {

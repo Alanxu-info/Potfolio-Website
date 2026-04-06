@@ -170,7 +170,6 @@ body.comic-sans * {
 
 /* ── Info panel ──────────────────────────────────────────── */
 
-
 #info-content {
   padding: 3px 5px 5px;
 }
@@ -264,7 +263,7 @@ body.comic-sans * {
 }
 
 
-/* ── Resume ─────────────────────────────────────────────── */
+/* ── Resume ──────────────────────────────────────────────── */
 
 .resume-columns {
   display: grid;
@@ -363,12 +362,6 @@ body.comic-sans * {
   transform: translateY(0);
 }
 
-.media-gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-
 .media-duo {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -384,6 +377,12 @@ body.comic-sans * {
 .media-quad {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.media-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
 }
 
