@@ -4,23 +4,23 @@
   "description": "The new identity system for the Museum of Contemporary Photography centers on contrast and clarity through reduction. The core challenge was designing a system that could remain neutral enough to support highly diverse photographic content, while still maintaining a distinct institutional voice. Early explorations became visually competitive with the imagery, so the system was stripped down to scale, typography, and composition as primary drivers.\n\nI developed a logo that maintains legibility across extreme size ranges, addressing applications from small captions to large-scale environmental graphics. The typographic system was built to be interchangeable, allowing flexibility across campaigns without losing consistency. A restrained, neutral palette ensures the identity never overpowers the work it presents.\n\nThe result is an adaptive identity that balances presence and restraint, designed to remain relevant over time.",
   "media": [
     { "type": "image", "src": "media/mocp-1.png" },
-    { "type": "video", "src": "media/mocp 2.mp4" },
+    { "type": "video", "src": "media/mocp-2.mp4" },
     {
       "type": "duo",
-      "items": ["media/mocp-3.png", "media/mocp-4.png"]
+      "items": ["media/mocp-3.jpg", "media/mocp-4.jpg"]
     },
     {
       "type": "duo",
-      "items": ["media/mocp-5.jpg", "media/mocp-6.jpg"]
+      "items": ["media/mocp-5.jpeg", "media/mocp-6.jpeg"]
     },
     {
       "type": "duo-mobile-solo",
-      "items": ["media/mocp-7.jpg", "media/mocp-8.jpeg"]
+      "items": ["media/mocp-7.jpeg", "media/mocp-8.png"]
     },
-    { "type": "image", "src": "media/mocp-9.jpeg" },
-    { "type": "image", "src": "media/mocp-10.jpeg" },
-    { "type": "image", "src": "media/mocp-11.png" },
-    { "type": "image", "src": "media/Frames-12.png" },
+    { "type": "image", "src": "media/mocp-9.png" },
+    { "type": "image", "src": "media/mocp-10.jpg" },
+    { "type": "image", "src": "media/mocp-11.jpg" },
+    { "type": "image", "src": "media/mocp-12.jpg" },
     { "type": "image", "src": "media/mocp-13.jpg" },
     {
       "type": "gallery-4",
@@ -45,7 +45,7 @@
     },
     {
       "type": "duo-mobile-solo",
-      "items": ["media/mocp-14.jpeg", "media/mocp-15.jpeg"]
+      "items": ["media/mocp-14.png", "media/mocp-15.png"]
     },
     { "type": "youtube", "src": "https://www.youtube.com/embed/TryYwZvPksU", "caption": "Museum of Contemporary Photography Main Hall Installation" }
   ]
