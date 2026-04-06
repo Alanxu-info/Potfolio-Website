@@ -19,35 +19,10 @@
   "media": [
     { "type": "video", "src": "media/vct24-01.mp4" },
     {
-      "type": "duo",
+      "type": "duo-mobile-solo",
       "items": ["media/vct24-02.mp4", "media/vct24-03.jpg"]
     },
     { "type": "image", "src": "media/vct24-04.jpg" },
-    { "type": "image", "src": "media/vct24-05.jpg" },
-    {
-      "type": "duo",
-      "items": ["media/vct24-06.mp4", "media/vct24-07.mp4"]
-    },
-    { "type": "image", "src": "media/vct24-08.jpg" },
-    {
-      "type": "gallery-4",
-      "items": [
-        "media/Icons/Icons-01.jpg",
-        "media/Icons/Icons-02.jpg",
-        "media/Icons/Icons-03.jpg",
-        "media/Icons/Icons-04.jpg",
-        "media/Icons/Icons-05.jpg",
-        "media/Icons/Icons-06.jpg",
-        "media/Icons/Icons-07.jpg",
-        "media/Icons/Icons-08.jpg",
-        "media/Icons/Icons-09.jpg",
-        "media/Icons/Icons-10.jpg",
-        "media/Icons/Icons-11.jpg",
-        "media/Icons/Icons-12.jpg",
-        "media/Icons/Icons-13.jpg"
-      ]
-    },
-    { "type": "image", "src": "media/vct24-09.jpg" },
     {
       "type": "gallery-5-nogap",
       "items": [
@@ -98,11 +73,15 @@
         "media/Refined Sketch/Tagline Variations 3-40.jpg"
       ]
     },
-    { "type": "image", "src": "media/Tagline Variation/Tagline Variations-01.jpg" },
-    { "type": "image", "src": "media/Tagline Variation/Tagline Variations-02.jpg" },
+    {
+      "type": "duo-mobile-solo",
+      "items": ["media/vct24_5.jpg", "media/vct24_6.jpg"]
+    },
     {
       "type": "gallery",
       "items": [
+        "media/Tagline Variation/Tagline Variations-01.jpg",
+        "media/Tagline Variation/Tagline Variations-02.jpg",
         "media/Tagline Variation/Tagline Variations-03.jpg",
         "media/Tagline Variation/Tagline Variations-04.jpg",
         "media/Tagline Variation/Tagline Variations-05.jpg",
@@ -119,6 +98,87 @@
         "media/Tagline Variation/Tagline Variations-16.jpg",
         "media/Tagline Variation/Tagline Variations-17.jpg"
       ]
-    }
+    },
+    { "type": "image", "src": "media/vct24-07.jpg" },
+    {
+      "type": "duo",
+      "items": ["media/vct24-08.mp4", "media/vct24-09.mp4"]
+    },
+    { "type": "image", "src": "media/vct24-010.jpg" },
+    {
+      "type": "duo-mobile-solo",
+      "items": ["media/vct24-11.mp4", "media/vct24-12.jpg"]
+    },
+    {
+      "type": "duo-mobile-solo",
+      "items": ["media/vct24-13.jpg", "media/vct24-14.jpg"]
+    },
+    { "type": "image", "src": "media/vct24-15.jpg" },
+    {
+      "type": "duo-mobile-solo",
+      "items": ["media/vct24-16.jpg", "media/vct24-17.jpg"]
+    },
+    { "type": "image", "src": "media/vct24-18.jpg" },
+    { "type": "image", "src": "media/vct24-19.jpg" },
+    { "type": "image", "src": "media/vct24-20.jpg" },
+    {
+      "type": "duo-mobile-solo",
+      "items": ["media/vct24-21.jpg", "media/vct24-22.jpg"]
+    },
+    {
+      "type": "duo-mobile-solo",
+      "items": ["media/vct24-23.jpg", "media/vct24-24.jpg"]
+    },
+    {
+      "type": "duo-mobile-solo",
+      "items": ["media/vct24-25.jpg", "media/vct24-26.jpg"]
+    },
+    {
+      "type": "duo-mobile-solo",
+      "items": ["media/vct24-27.jpg", "media/vct24-28.jpg"]
+    },
+    {
+      "type": "duo-mobile-solo",
+      "items": ["media/vct24-29.jpg", "media/vct24-30.jpg"]
+    },
+    { "type": "image", "src": "media/vct24-31.jpg" }
+  ],
+  "credits": [
+    [
+      {
+        "heading": "Creative Direction",
+        "names": ["Jason Yeh", "Eugene Seo"]
+      }
+    ],
+    [
+      {
+        "heading": "Brand Design",
+        "names": ["Angela Seryoung Park", "Yewon Kim", "Alan Xu", "Jun Hong", "Champ Panupong Techawongthawon", "Naomi Tirronen", "Lukas Havelock", "Sean Shang", "Winnie Yuen"]
+      },
+      {
+        "heading": "3D Design",
+        "names": ["Yuee Seo", "Slava Leschenko", "Mindaugas Povilaitis", "Devin Luquette", "Baris Yavuz", "Manny Contreras"]
+      },
+      {
+        "heading": "Animation",
+        "names": ["Caique Oliveira"]
+      },
+      {
+        "heading": "Supernova Design",
+        "names": ["Jake Ferguson", "Mindaugas Povilaitis"]
+      },
+      {
+        "heading": "Key Art Illustration & Painting",
+        "names": ["Arthur Yuan \u2013 Art Direction", "Mono", "GSYK", "Yuke Mao", "Huanfeng Qu"]
+      },
+      {
+        "heading": "Sound Design & Mix",
+        "names": ["Mike Leone"]
+      },
+      {
+        "heading": "Photo Credit",
+        "names": ["Yewon Kim"]
+      }
+    ]
   ]
 }

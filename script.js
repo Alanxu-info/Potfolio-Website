@@ -504,7 +504,7 @@ async function openOverlay(title, slug) {
         el.setAttribute('playsinline', '');
         el.style.width = '100%';
         el.style.display = 'block';
-      } else if (item.type === 'duo' || item.type === 'duo-mobile-solo' || item.type === 'trio' || item.type === 'trio-mobile-solo' || item.type === 'quad' || item.type === 'gallery' || item.type === 'gallery-4' || item.type === 'gallery-5' || item.type === 'gallery-5-nogap' || item.type === 'gallery-8') {
+      } else if (item.type === 'duo' || item.type === 'duo-mobile-solo' || item.type === 'trio' || item.type === 'trio-mobile-solo' || item.type === 'quad' || item.type === 'gallery' || item.type === 'gallery-4' || item.type === 'gallery-4-nogap' || item.type === 'gallery-5' || item.type === 'gallery-5-nogap' || item.type === 'gallery-8') {
         el = document.createElement('div');
         if (item.type === 'duo') el.className = 'media-duo';
         else if (item.type === 'duo-mobile-solo') el.className = 'media-duo media-duo-mobile-solo';
@@ -512,6 +512,7 @@ async function openOverlay(title, slug) {
         else if (item.type === 'trio-mobile-solo') el.className = 'media-trio media-trio-mobile-solo';
         else if (item.type === 'quad') el.className = 'media-quad';
         else if (item.type === 'gallery-4') el.className = 'media-gallery-4';
+        else if (item.type === 'gallery-4-nogap') el.className = 'media-gallery-4-nogap';
         else if (item.type === 'gallery-5') el.className = 'media-gallery-5';
         else if (item.type === 'gallery-5-nogap') el.className = 'media-gallery-5-nogap';
         else if (item.type === 'gallery-8') el.className = 'media-gallery-8';
@@ -575,6 +576,33 @@ async function openOverlay(title, slug) {
         }
       }
     });
+
+    if (data.credits) {
+      const creditsGrid = document.createElement('div');
+      creditsGrid.className = 'resume-columns';
+      creditsGrid.style.gridTemplateColumns = '1fr 1fr';
+      data.credits.forEach(col => {
+        const colDiv = document.createElement('div');
+        col.forEach(section => {
+          const sectionDiv = document.createElement('div');
+          sectionDiv.style.marginBottom = '15px';
+          const heading = document.createElement('div');
+          heading.className = 'h2';
+          heading.style.marginBottom = '2px';
+          heading.textContent = section.heading;
+          sectionDiv.appendChild(heading);
+          section.names.forEach(name => {
+            const line = document.createElement('div');
+            line.className = 'caption';
+            line.textContent = name;
+            sectionDiv.appendChild(line);
+          });
+          colDiv.appendChild(sectionDiv);
+        });
+        creditsGrid.appendChild(colDiv);
+      });
+      overlayBody.appendChild(creditsGrid);
+    }
 
     setTimeout(() => {
       mediaElements.forEach((el, i) => setTimeout(() => {

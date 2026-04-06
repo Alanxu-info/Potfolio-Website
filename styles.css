@@ -392,6 +392,12 @@ body.comic-sans * {
   gap: 10px;
 }
 
+.media-gallery-4-nogap {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
 .media-gallery-5 {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -433,6 +439,10 @@ body.comic-sans * {
 
   .media-gallery-5 {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  .media-gallery-5-nogap {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .media-gallery-8 {
