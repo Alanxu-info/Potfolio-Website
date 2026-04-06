@@ -531,6 +531,13 @@ async function openOverlay(title, slug) {
           el.appendChild(child);
           mediaElements.push(child);
         });
+      } else if (item.type === 'iframe') {
+        el = document.createElement('iframe');
+        el.src = item.src;
+        el.style.cssText = 'border:0;width:100%;height:' + (item.height || '600px') + ';';
+        el.allowFullscreen = true;
+        el.setAttribute('scrolling', 'no');
+        if (item.allow) el.allow = item.allow;
       } else if (item.type === 'youtube' || item.type === 'youtube-autoplay') {
         el = document.createElement('div');
         el.style.cssText = 'position:relative;width:100%;aspect-ratio:16/9;';
