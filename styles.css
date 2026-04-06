@@ -207,6 +207,14 @@ body.comic-sans * {
   margin-top: 4px;
 }
 
+.resume-btn-wrapper .resume-btn-text {
+  text-decoration: none;
+}
+
+.resume-btn-wrapper:hover .resume-btn-text {
+  text-decoration: underline;
+}
+
 
 /* ── Works panel ─────────────────────────────────────────── */
 

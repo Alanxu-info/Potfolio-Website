@@ -148,7 +148,21 @@ function buildInfoPanel() {
 
   const linksDiv = document.createElement('div');
   linksDiv.className = 'info-section';
-  linksDiv.appendChild(linkEl('Click here for a lot more info', null, openResumeOverlay));
+  const resumeWrapper = document.createElement('div');
+  resumeWrapper.className = 'resume-btn-wrapper';
+  resumeWrapper.style.cursor = 'pointer';
+  resumeWrapper.addEventListener('click', openResumeOverlay);
+  // Move bio image into the wrapper
+  bioImg.parentElement.removeChild(bioImg);
+  resumeWrapper.appendChild(bioImg);
+  const resumeText = document.createElement('span');
+  resumeText.className = 'h2 info-link resume-btn-text';
+  resumeText.textContent = 'Click here for a lot more info';
+  resumeWrapper.appendChild(resumeText);
+  // Insert wrapper at end of previous section
+  const bioSection = infoContent.lastElementChild;
+  bioSection.appendChild(resumeWrapper);
+  bioSection.style.marginBottom = '0';
   linksDiv.appendChild(document.createElement('br'));
   linksDiv.appendChild(linkEl('LinkedIn', 'https://www.linkedin.com/in/alan-xu-3093541b7/'));
   linksDiv.appendChild(linkEl('Instagram', 'https://www.instagram.com/alanxu.info/'));
