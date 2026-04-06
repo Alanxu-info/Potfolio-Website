@@ -341,8 +341,8 @@ function bindDrag() {
     if (!isDragging) return;
     hideTooltip();
     const t = e.touches[0];
-    const dx = t.clientX - lastClientX;
-    const dy = t.clientY - lastClientY;
+    const dx = (t.clientX - lastClientX) * 1.8;
+    const dy = (t.clientY - lastClientY) * 1.8;
     targetX += dx; targetY += dy;
     dragVX = dx; dragVY = dy;
     lastClientX = t.clientX; lastClientY = t.clientY;
