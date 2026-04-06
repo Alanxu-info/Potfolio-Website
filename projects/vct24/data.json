@@ -74,6 +74,7 @@
       ]
     },
     { "type": "image", "src": "media/vct24_5.jpg" },
+    { "type": "image", "src": "media/vct24_5.5.jpg" },
     {
       "type": "gallery",
       "items": [
@@ -101,6 +102,23 @@
       "items": ["media/vct24-08.mp4", "media/vct24-09.mp4"]
     },
     { "type": "image", "src": "media/vct24-010.jpg" },
+    {
+      "type": "gallery-4-nogap",
+      "items": [
+        "media/Icons/Icons-01.jpg",
+        "media/Icons/Icons-02.jpg",
+        "media/Icons/Icons-03.jpg",
+        "media/Icons/Icons-04.jpg",
+        "media/Icons/Icons-05.jpg",
+        "media/Icons/Icons-06.jpg",
+        "media/Icons/Icons-07.jpg",
+        "media/Icons/Icons-08.jpg",
+        "media/Icons/Icons-09.jpg",
+        "media/Icons/Icons-10.jpg",
+        "media/Icons/Icons-11.jpg",
+        "media/Icons/Icons-12.jpg"
+      ]
+    },
     {
       "type": "duo-mobile-solo",
       "items": ["media/vct24-11.mp4", "media/vct24-12.jpg"]

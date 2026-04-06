@@ -441,6 +441,10 @@ body.comic-sans * {
     grid-template-columns: repeat(4, 1fr);
   }
 
+  .media-gallery-4-nogap {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   .media-gallery-5-nogap {
     grid-template-columns: repeat(3, 1fr);
   }
