@@ -189,6 +189,7 @@ function buildGrid() {
         tile.addEventListener('click', e => {
           e.stopPropagation();
           document.body.classList.toggle('comic-sans');
+          showComicSansPanel();
         });
       }
 
@@ -331,6 +332,35 @@ function bindDrag() {
     isDragging = false;
     vx = dragVX; vy = dragVY;
   });
+}
+
+
+/* ── Comic Sans easter egg panel ─────────────────────────── */
+
+function showComicSansPanel() {
+  const existing = document.getElementById('comic-sans-panel');
+  if (existing) existing.remove();
+
+  const panel = document.createElement('div');
+  panel.id = 'comic-sans-panel';
+  panel.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:250px;height:500px;background:#D7D7D7;z-index:10000;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;cursor:pointer;';
+
+  const text = document.createElement('span');
+  text.className = 'h2';
+  text.innerHTML = 'The whole site is now typeset in Comic Sans. Enjoy.<br><br>Click anywhere to continue.';
+  panel.appendChild(text);
+
+  document.getElementById('bg-grid').classList.add('blurred');
+
+  panel.addEventListener('click', e => {
+    e.stopPropagation();
+    panel.remove();
+    if (!document.getElementById('project-overlay').classList.contains('is-open')) {
+      document.getElementById('bg-grid').classList.remove('blurred');
+    }
+  }, { once: true });
+
+  document.body.appendChild(panel);
 }
 
 
