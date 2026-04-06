@@ -45,6 +45,6 @@
     },
     { "type": "image", "src": "media/mocp-14.png" },
     { "type": "image", "src": "media/mocp-15.png" },
-    { "type": "youtube", "src": "https://www.youtube.com/embed/TryYwZvPksU", "caption": "Museum of Contemporary Photography Main Hall Installation" }
+    { "type": "youtube", "src": "https://www.youtube.com/embed/TryYwZvPksU", "caption": "Main Hall Installation", "captionClass": "h1" }
   ]
 }

@@ -199,6 +199,9 @@ function buildGrid() {
             document.body.classList.add('comic-sans');
             showComicSansPanel();
           }
+          const reg = media.filter(m => !m.src.includes('Easter Eggs/'));
+          const replacement = reg[Math.floor(Math.random() * reg.length)];
+          swapTile(tile, replacement);
         });
       }
 

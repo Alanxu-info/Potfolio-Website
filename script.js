@@ -467,6 +467,7 @@ async function openOverlay(title, slug) {
     overlayBody.appendChild(desc);
 
     if (data.details) {
+      desc.style.marginBottom = '15px';
       const detailsGrid = document.createElement('div');
       detailsGrid.className = 'resume-columns';
       detailsGrid.style.marginBottom = '30px';
@@ -476,12 +477,10 @@ async function openOverlay(title, slug) {
         heading.className = 'h2';
         heading.textContent = col.heading + ':';
         colDiv.appendChild(heading);
-        col.items.forEach(item => {
-          const line = document.createElement('div');
-          line.className = 'h2';
-          line.textContent = item;
-          colDiv.appendChild(line);
-        });
+        const items = document.createElement('div');
+        items.className = 'h2';
+        items.textContent = col.items.join(', ');
+        colDiv.appendChild(items);
         detailsGrid.appendChild(colDiv);
       });
       overlayBody.appendChild(detailsGrid);
@@ -569,7 +568,7 @@ async function openOverlay(title, slug) {
         overlayBody.appendChild(el);
         if (item.caption) {
           const cap = document.createElement('p');
-          cap.className = 'caption media-caption';
+          cap.className = (item.captionClass || 'caption') + ' media-caption';
           cap.textContent = item.caption;
           overlayBody.appendChild(cap);
         }
