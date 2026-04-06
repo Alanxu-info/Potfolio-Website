@@ -108,6 +108,7 @@ body:not(.splash-active) #bg-grid {
   transition: opacity 0.4s ease;
   user-select: none;
   -webkit-user-select: none;
+  pointer-events: none;
 }
 
 .bg-tile.visible {

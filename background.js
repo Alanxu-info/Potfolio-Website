@@ -179,31 +179,8 @@ function buildGrid() {
 
       const item = shuffled[tileIdx++];
 
-      const name = item.src.split('/').pop();
-
-      if (!isTouchDevice) {
-        tile.addEventListener('mouseenter', e => { if (!isOverlayOpen()) showTooltip(name, e.clientX, e.clientY); });
-        tile.addEventListener('mousemove',  e => { if (isOverlayOpen()) hideTooltip(); else moveTooltip(e.clientX, e.clientY); });
-        tile.addEventListener('mouseleave', hideTooltip);
-      }
-
-      if (name === 'Click me-1.jpg') {
-        tile.style.cursor = 'pointer';
-        tile.addEventListener('click', e => {
-          e.stopPropagation();
-          document.body.classList.toggle('comic-sans');
-        });
-      }
-
-      const slug = bgSlug(item.src);
-      if (slug) {
-        tile.style.cursor = 'pointer';
-        tile.addEventListener('click', e => {
-          if (isOverlayOpen()) return;
-          e.stopPropagation();
-          if (typeof openOverlay === 'function') openOverlay(null, slug);
-        });
-      }
+      tile._name = item.src.split('/').pop();
+      tile._slug = bgSlug(item.src);
 
       const promise = loadQueue(() => createMedia(tile, item));
       entries.push({ tile, promise });
@@ -267,8 +244,11 @@ function isOverlayOpen() {
 }
 
 function bindDrag() {
+  let clickStartX, clickStartY;
+
   /* Mouse (desktop) */
   container.addEventListener('mousedown', e => {
+    clickStartX = e.clientX; clickStartY = e.clientY;
     if (isOverlayOpen()) return;
     isDragging = true;
     lastClientX = e.clientX; lastClientY = e.clientY;
@@ -288,15 +268,56 @@ function bindDrag() {
   window.addEventListener('mouseup', () => {
     if (!isDragging) return;
     isDragging = false;
-    container.style.cursor = 'grab';
     vx = dragVX; vy = dragVY;
   });
 
-  /* Click to collapse (desktop) */
-  container.addEventListener('click', () => {
-    if (isTouchDevice || isOverlayOpen()) return;
+  /* Hit-test: find tile under cursor */
+  function tileAt(cx, cy) {
+    const totalW = numCols * STEP;
+    const totalH = numRows * STEP;
+    for (const tile of tiles) {
+      const x = ((tile._col * STEP + offsetX) % totalW + totalW) % totalW - STEP;
+      const y = ((tile._row * STEP + offsetY) % totalH + totalH) % totalH - STEP;
+      if (cx >= x && cx < x + TILE_SIZE && cy >= y && cy < y + TILE_SIZE) return tile;
+    }
+    return null;
+  }
+
+  /* Click handling (desktop) */
+  container.addEventListener('click', e => {
+    if (isTouchDevice) return;
+    const dx = e.clientX - clickStartX, dy = e.clientY - clickStartY;
+    if (dx * dx + dy * dy > 25) return; // was a drag, not a click
+    if (isOverlayOpen()) return;
+    const tile = tileAt(e.clientX, e.clientY);
+    if (tile) {
+      if (tile._name === 'Click me-1.jpg') {
+        document.body.classList.toggle('comic-sans');
+        return;
+      }
+      if (tile._slug && typeof openOverlay === 'function') {
+        openOverlay(null, tile._slug);
+        return;
+      }
+    }
     if (typeof closeAll === 'function') closeAll();
   });
+
+  /* Tooltip on hover (desktop) */
+  if (!isTouchDevice) {
+    container.addEventListener('mousemove', e => {
+      if (isDragging || isOverlayOpen()) { hideTooltip(); return; }
+      const tile = tileAt(e.clientX, e.clientY);
+      if (tile && tile._name) {
+        showTooltip(tile._name, e.clientX, e.clientY);
+        container.style.cursor = (tile._slug || tile._name === 'Click me-1.jpg') ? 'pointer' : 'grab';
+      } else {
+        hideTooltip();
+        container.style.cursor = 'grab';
+      }
+    });
+    container.addEventListener('mouseleave', () => { hideTooltip(); });
+  }
 
   /* Wheel */
   container.addEventListener('wheel', e => {
