@@ -355,4 +355,17 @@ async function initBackground() {
   setInterval(checkForNewMedia, POLL_MS);
 }
 
+/* ── Splash screen ──────────────────────────────────────── */
+
+document.body.classList.add('splash-active');
+
+const splash = document.getElementById('splash');
+if (splash) {
+  splash.addEventListener('click', () => {
+    splash.classList.add('leaving');
+    document.body.classList.remove('splash-active');
+    splash.addEventListener('transitionend', () => splash.remove(), { once: true });
+  }, { once: true });
+}
+
 initBackground();

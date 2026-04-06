@@ -31,6 +31,52 @@ body.comic-sans * {
 }
 
 
+/* ── Splash screen ──────────────────────────────────────── */
+
+#splash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  backdrop-filter: blur(30px);
+  cursor: pointer;
+  transition: opacity 0.6s ease;
+}
+
+#splash.leaving {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#splash-text {
+  color: #000;
+  user-select: none;
+}
+
+body.splash-active .page,
+body.splash-active #bg-grid {
+  filter: blur(20px);
+  transition: filter 0.8s ease;
+}
+
+body.splash-active .page {
+  opacity: 0;
+  transition: filter 0.8s ease, opacity 0.8s ease;
+}
+
+body:not(.splash-active) .page {
+  opacity: 1;
+  transition: filter 0.8s ease, opacity 0.8s ease;
+}
+
+body:not(.splash-active) #bg-grid {
+  transition: filter 0.8s ease;
+}
+
+
 /* ── Background grid ─────────────────────────────────────── */
 
 #bg-grid {
