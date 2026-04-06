@@ -195,8 +195,10 @@ function buildGrid() {
         tile.style.cursor = 'pointer';
         tile.addEventListener('click', e => {
           e.stopPropagation();
-          document.body.classList.toggle('comic-sans');
-          showComicSansPanel();
+          if (!document.body.classList.contains('comic-sans')) {
+            document.body.classList.add('comic-sans');
+            showComicSansPanel();
+          }
         });
       }
 
@@ -369,7 +371,7 @@ function showComicSansPanel() {
 
   const text = document.createElement('span');
   text.className = 'h2';
-  text.innerHTML = 'The whole site is now typeset in Comic Sans.<br>Enjoy.';
+  text.innerHTML = 'The whole site is now typeset in Comic Sans.<br><br>Enjoy.';
   panel.appendChild(text);
   backdrop.appendChild(panel);
 
