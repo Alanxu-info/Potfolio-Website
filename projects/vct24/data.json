@@ -73,14 +73,10 @@
         "media/Refined Sketch/Tagline Variations 3-40.jpg"
       ]
     },
-    {
-      "type": "duo-mobile-solo",
-      "items": ["media/vct24_5.jpg", "media/vct24_6.jpg"]
-    },
+    { "type": "image", "src": "media/vct24_5.jpg" },
     {
       "type": "gallery",
       "items": [
-        "media/Tagline Variation/Tagline Variations-01.jpg",
         "media/Tagline Variation/Tagline Variations-02.jpg",
         "media/Tagline Variation/Tagline Variations-03.jpg",
         "media/Tagline Variation/Tagline Variations-04.jpg",
@@ -146,38 +142,40 @@
   "credits": [
     [
       {
-        "heading": "Creative Direction",
+        "heading": "Creative Direction:",
         "names": ["Jason Yeh", "Eugene Seo"]
       }
     ],
     [
       {
-        "heading": "Brand Design",
+        "heading": "Brand Design:",
         "names": ["Angela Seryoung Park", "Yewon Kim", "Alan Xu", "Jun Hong", "Champ Panupong Techawongthawon", "Naomi Tirronen", "Lukas Havelock", "Sean Shang", "Winnie Yuen"]
       },
       {
-        "heading": "3D Design",
+        "heading": "3D Design:",
         "names": ["Yuee Seo", "Slava Leschenko", "Mindaugas Povilaitis", "Devin Luquette", "Baris Yavuz", "Manny Contreras"]
       },
       {
-        "heading": "Animation",
+        "heading": "Animation:",
         "names": ["Caique Oliveira"]
       },
       {
-        "heading": "Supernova Design",
+        "heading": "Supernova Design:",
         "names": ["Jake Ferguson", "Mindaugas Povilaitis"]
       },
       {
-        "heading": "Key Art Illustration & Painting",
+        "heading": "Key Art Illustration & Painting:",
         "names": ["Arthur Yuan \u2013 Art Direction", "Mono", "GSYK", "Yuke Mao", "Huanfeng Qu"]
       },
       {
-        "heading": "Sound Design & Mix",
+        "heading": "Sound Design & Mix:",
         "names": ["Mike Leone"]
-      },
+      }
+    ],
+    [
       {
-        "heading": "Photo Credit",
-        "names": ["Yewon Kim"]
+        "heading": "Photo Credit:",
+        "names": ["Yewon Kim", "Angela Seryoung Park", "Alan Xu"]
       }
     ]
   ]

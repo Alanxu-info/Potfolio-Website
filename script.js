@@ -580,7 +580,6 @@ async function openOverlay(title, slug) {
     if (data.credits) {
       const creditsGrid = document.createElement('div');
       creditsGrid.className = 'resume-columns';
-      creditsGrid.style.gridTemplateColumns = '1fr 1fr';
       data.credits.forEach(col => {
         const colDiv = document.createElement('div');
         col.forEach(section => {
@@ -593,7 +592,7 @@ async function openOverlay(title, slug) {
           sectionDiv.appendChild(heading);
           section.names.forEach(name => {
             const line = document.createElement('div');
-            line.className = 'caption';
+            line.className = 'h2';
             line.textContent = name;
             sectionDiv.appendChild(line);
           });
