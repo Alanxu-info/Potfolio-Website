@@ -23,6 +23,31 @@
       "items": ["media/vct24-02.mp4", "media/vct24-03.jpg"]
     },
     { "type": "image", "src": "media/vct24-04.jpg" },
+    { "type": "image", "src": "media/vct24-05.jpg" },
+    {
+      "type": "duo",
+      "items": ["media/vct24-06.mp4", "media/vct24-07.mp4"]
+    },
+    { "type": "image", "src": "media/vct24-08.jpg" },
+    {
+      "type": "gallery-4",
+      "items": [
+        "media/Icons/Icons-01.jpg",
+        "media/Icons/Icons-02.jpg",
+        "media/Icons/Icons-03.jpg",
+        "media/Icons/Icons-04.jpg",
+        "media/Icons/Icons-05.jpg",
+        "media/Icons/Icons-06.jpg",
+        "media/Icons/Icons-07.jpg",
+        "media/Icons/Icons-08.jpg",
+        "media/Icons/Icons-09.jpg",
+        "media/Icons/Icons-10.jpg",
+        "media/Icons/Icons-11.jpg",
+        "media/Icons/Icons-12.jpg",
+        "media/Icons/Icons-13.jpg"
+      ]
+    },
+    { "type": "image", "src": "media/vct24-09.jpg" },
     {
       "type": "gallery-5-nogap",
       "items": [
