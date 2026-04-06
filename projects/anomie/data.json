@@ -1,20 +1,27 @@
 {
   "title": "Anomie",
   "categories": ["Print", "Branding", "Motion"],
-  "description": "To be added",
+  "description": "ANOMIE is a tabletop world-building board game centered on structure, constraint, and emergence. The primary challenge was creating a visual system expansive enough to support open-ended narrative play while remaining cohesive. By extending Off-Type\u2019s OB Brut, I developed a custom typographic and glyph system that functions as both language and interface\u2014encoding rules, actions, and relationships within the game. The result is a modular identity that scales across components, reinforcing the systematic logic at the core of the gameplay.",
   "media": [
-    { "type": "video", "src": "media/Anomie-1.mp4" },
-    { "type": "video", "src": "media/Anomie-2.mp4" },
-    { "type": "iframe", "src": "https://heyzine.com/flip-book/53aa79a5be.html", "height": "600px", "allow": "clipboard-write" },
-    { "type": "video", "src": "media/Anomie-4.mp4" },
+    { "type": "video", "src": "media/Anomie_1.mp4" },
     {
       "type": "duo",
-      "items": ["media/Anomie-5.mp4", "media/Anomie-6.mp4"]
+      "items": ["media/Anomie-2.mp4", "media/Anomie-3.mp4"]
     },
-    { "type": "video", "src": "media/Anomie-7.mp4" },
     {
       "type": "duo",
-      "items": ["media/Anomie-8.mp4", "media/Anomie-9.mp4"]
+      "items": ["media/Anomie-4.mp4", "media/Anomie-5.mp4"]
+    },
+    { "type": "video", "src": "media/Anomie-6.mp4" },
+    {
+      "type": "duo",
+      "items": ["media/Anomie-7.mp4", "media/Anomie-8.mp4"]
+    },
+    { "type": "video", "src": "media/Anomie-9.mp4" },
+    { "type": "image", "src": "media/GS_1.jpg" },
+    {
+      "type": "duo",
+      "items": ["media/GS_2.jpg", "media/GS_3.jpg"]
     },
     { "type": "video", "src": "media/Anomie-10.mp4" },
     { "type": "image", "src": "media/Anomie-11.jpg" }
