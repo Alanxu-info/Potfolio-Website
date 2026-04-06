@@ -281,6 +281,13 @@ function positionTile(tile) {
   const x = ((tile._col * STEP + offsetX) % totalW + totalW) % totalW - STEP;
   const y = ((tile._row * STEP + offsetY) % totalH + totalH) % totalH - STEP;
   tile.style.transform = `translate(${x}px, ${y}px)`;
+
+  const vid = tile.querySelector('video');
+  if (vid) {
+    const onScreen = x > -TILE_SIZE && x < window.innerWidth && y > -TILE_SIZE && y < window.innerHeight;
+    if (onScreen && vid.paused) vid.play().catch(() => {});
+    else if (!onScreen && !vid.paused) vid.pause();
+  }
 }
 
 

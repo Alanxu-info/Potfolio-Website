@@ -62,6 +62,7 @@ body.comic-sans * {
   transition: opacity 0.4s ease;
   user-select: none;
   -webkit-user-select: none;
+  will-change: transform;
 }
 
 .bg-tile.visible {
