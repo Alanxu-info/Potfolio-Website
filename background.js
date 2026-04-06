@@ -80,7 +80,7 @@ function makeQueue(limit) {
   return fn => new Promise(resolve => { pending.push({ fn, resolve }); next(); });
 }
 
-const loadQueue = makeQueue(3);
+const loadQueue = makeQueue(6);
 
 
 /* ── Tooltip ─────────────────────────────────────────────── */
@@ -228,13 +228,18 @@ function buildGrid() {
         });
       }
 
-      const promise = loadQueue(() => createMedia(tile, item));
-      entries.push({ tile, promise });
+      entries.push({ tile, item });
     }
   }
 
-  entries.sort(() => Math.random() - 0.5).forEach(({ tile, promise }, i) => {
-    promise.then(() => setTimeout(() => tile.classList.add('visible'), i * 40));
+  // Shuffle entries so tiles load in random order
+  entries.sort(() => Math.random() - 0.5);
+
+  // Queue loading in shuffled order, stagger fade-in
+  entries.forEach(({ tile, item }, i) => {
+    loadQueue(() => createMedia(tile, item)).then(() => {
+      setTimeout(() => tile.classList.add('visible'), i * 30);
+    });
   });
 }
 
