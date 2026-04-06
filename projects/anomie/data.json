@@ -18,10 +18,10 @@
       "items": ["media/Anomie-7.mp4", "media/Anomie-8.mp4"]
     },
     { "type": "video", "src": "media/Anomie-9.mp4" },
-    { "type": "image", "src": "media/GS_1.jpg" },
+    { "type": "image", "src": "media/Anomie_GS_1.jpg" },
     {
       "type": "duo",
-      "items": ["media/GS_2.jpg", "media/GS_3.jpg"]
+      "items": ["media/Anomie_GS_2.jpg", "media/Anomie_GS_3.jpg"]
     },
     { "type": "video", "src": "media/Anomie-10.mp4" },
     { "type": "image", "src": "media/Anomie-11.jpg" }
