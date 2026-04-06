@@ -261,7 +261,7 @@ async function checkForNewMedia() {
 /* ── Animation ───────────────────────────────────────────── */
 
 function tick() {
-  const recover = isTouchDevice ? 0.06 : 0.015;
+  const recover = isTouchDevice ? 0.045 : 0.015;
   if (!isDragging) {
     vx += (DEFAULT_VX - vx) * recover;
     vy += (DEFAULT_VY - vy) * recover;
