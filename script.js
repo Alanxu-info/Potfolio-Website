@@ -504,7 +504,7 @@ async function openOverlay(title, slug) {
         el.setAttribute('playsinline', '');
         el.style.width = '100%';
         el.style.display = 'block';
-      } else if (item.type === 'duo' || item.type === 'duo-mobile-solo' || item.type === 'trio' || item.type === 'trio-mobile-solo' || item.type === 'quad' || item.type === 'gallery' || item.type === 'gallery-4' || item.type === 'gallery-5' || item.type === 'gallery-8') {
+      } else if (item.type === 'duo' || item.type === 'duo-mobile-solo' || item.type === 'trio' || item.type === 'trio-mobile-solo' || item.type === 'quad' || item.type === 'gallery' || item.type === 'gallery-4' || item.type === 'gallery-5' || item.type === 'gallery-5-nogap' || item.type === 'gallery-8') {
         el = document.createElement('div');
         if (item.type === 'duo') el.className = 'media-duo';
         else if (item.type === 'duo-mobile-solo') el.className = 'media-duo media-duo-mobile-solo';
@@ -513,6 +513,7 @@ async function openOverlay(title, slug) {
         else if (item.type === 'quad') el.className = 'media-quad';
         else if (item.type === 'gallery-4') el.className = 'media-gallery-4';
         else if (item.type === 'gallery-5') el.className = 'media-gallery-5';
+        else if (item.type === 'gallery-5-nogap') el.className = 'media-gallery-5-nogap';
         else if (item.type === 'gallery-8') el.className = 'media-gallery-8';
         else el.className = 'media-gallery';
         item.items.forEach(src => {

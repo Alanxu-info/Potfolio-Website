@@ -398,6 +398,12 @@ body.comic-sans * {
   gap: 10px;
 }
 
+.media-gallery-5-nogap {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+}
+
 .media-gallery-8 {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
