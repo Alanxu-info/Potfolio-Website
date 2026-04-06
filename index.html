@@ -45,7 +45,13 @@
 
   <!-- Splash screen -->
   <div id="splash">
-    <span id="splash-text" class="h2">Click anywhere to enter</span>
+    <div id="splash-loader">
+      <span id="splash-percent" class="h2">0%</span>
+      <div id="splash-bar">
+        <div id="splash-bar-fill"></div>
+      </div>
+    </div>
+    <span id="splash-text" class="h2" style="opacity:0;pointer-events:none;">Click anywhere to enter</span>
   </div>
 
   <script src="script.js"></script>

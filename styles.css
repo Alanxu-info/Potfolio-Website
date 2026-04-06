@@ -51,9 +51,43 @@ body.comic-sans * {
   pointer-events: none;
 }
 
+#splash-loader {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.5s ease;
+}
+
+#splash-loader.done {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#splash-percent {
+  color: #000;
+  user-select: none;
+}
+
+#splash-bar {
+  width: 500px;
+  height: 50px;
+  border: 2px solid #000;
+  overflow: hidden;
+}
+
+#splash-bar-fill {
+  width: 0%;
+  height: 100%;
+  background: #000;
+  transition: width 0.15s linear;
+}
+
 #splash-text {
   color: #000;
   user-select: none;
+  transition: opacity 0.5s ease;
 }
 
 body.splash-active .page,
@@ -498,6 +532,11 @@ body:not(.splash-active) #bg-grid {
 
   .resume-columns {
     grid-template-columns: 1fr;
+  }
+
+  #splash-bar {
+    width: 280px;
+    height: 35px;
   }
 
   body.comic-sans,

@@ -187,10 +187,23 @@ function buildGrid() {
     }
   }
 
-  entries.sort(() => Math.random() - 0.5).forEach(({ tile, promise }, i) => {
-    promise.then(() => setTimeout(() => tile.classList.add('visible'), i * 40));
+  const sorted = entries.sort(() => Math.random() - 0.5);
+  const total = sorted.length;
+  let loaded = 0;
+
+  return new Promise(resolve => {
+    sorted.forEach(({ tile, promise }, i) => {
+      promise.then(() => {
+        loaded++;
+        if (typeof onTileLoaded === 'function') onTileLoaded(loaded, total);
+        if (loaded >= total) resolve();
+        setTimeout(() => tile.classList.add('visible'), i * 40);
+      });
+    });
   });
 }
+
+let onTileLoaded = null;
 
 
 /* ── Poll for new media ──────────────────────────────────── */
@@ -370,10 +383,11 @@ async function initBackground() {
     return;
   }
 
-  buildGrid();
+  const gridReady = buildGrid();
   requestAnimationFrame(tick);
   bindDrag();
   setInterval(checkForNewMedia, POLL_MS);
+  return gridReady;
 }
 
 /* ── Splash screen ──────────────────────────────────────── */
@@ -381,12 +395,33 @@ async function initBackground() {
 document.body.classList.add('splash-active');
 
 const splash = document.getElementById('splash');
+const splashLoader = document.getElementById('splash-loader');
+const splashPercent = document.getElementById('splash-percent');
+const splashBarFill = document.getElementById('splash-bar-fill');
+const splashText = document.getElementById('splash-text');
+
+onTileLoaded = (loaded, total) => {
+  const pct = Math.round((loaded / total) * 100);
+  if (splashPercent) splashPercent.textContent = pct + '%';
+  if (splashBarFill) splashBarFill.style.width = pct + '%';
+
+  if (pct >= 100) {
+    setTimeout(() => {
+      if (splashLoader) splashLoader.classList.add('done');
+      setTimeout(() => {
+        if (splashText) { splashText.style.opacity = '1'; splashText.style.pointerEvents = ''; }
+      }, 500);
+    }, 200);
+  }
+};
+
 if (splash) {
-  splash.addEventListener('click', () => {
+  splash.addEventListener('click', e => {
+    if (splashText && splashText.style.opacity !== '1') return;
     splash.classList.add('leaving');
     document.body.classList.remove('splash-active');
     splash.addEventListener('transitionend', () => splash.remove(), { once: true });
-  }, { once: true });
+  });
 }
 
 initBackground();
