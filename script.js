@@ -137,8 +137,10 @@ function buildInfoPanel() {
   const infoBtn = document.getElementById('info-btn');
   if (!bioImg.complete) {
     infoBtn.style.pointerEvents = 'none';
-    bioImg.addEventListener('load',  () => { infoBtn.style.pointerEvents = ''; }, { once: true });
-    bioImg.addEventListener('error', () => { infoBtn.style.pointerEvents = ''; }, { once: true });
+    const enableBtn = () => { infoBtn.style.pointerEvents = ''; };
+    bioImg.addEventListener('load',  enableBtn, { once: true });
+    bioImg.addEventListener('error', enableBtn, { once: true });
+    setTimeout(enableBtn, 3000);
   }
   bioImg.style.cursor = 'pointer';
   bioImg.addEventListener('click', openResumeOverlay);
