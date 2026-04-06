@@ -31,7 +31,7 @@ function bgSlug(src) {
   if (name.startsWith('enco')) return 'enco';
   if (name.startsWith('mc-') || name.startsWith('mc_')) return 'motion-connect';
   if (name.startsWith('mocp')) return 'mocp';
-  if (name.startsWith('vct24') || name.startsWith('icons-')) return 'vct24';
+  if (name.startsWith('vct24') || name.startsWith('vct_') || name.startsWith('icons-')) return 'vct24';
   return null;
 }
 
