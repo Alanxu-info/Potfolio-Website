@@ -441,10 +441,6 @@ body.comic-sans * {
     bottom: 0;
   }
 
-  .media-duo {
-    grid-template-columns: 1fr;
-  }
-
   .media-duo-mobile-solo {
     grid-template-columns: 1fr;
   }

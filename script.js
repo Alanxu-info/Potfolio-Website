@@ -217,6 +217,7 @@ let overlayObserver = null;
 function openResumeOverlay() {
   currentSlug = '__resume__';
   overlayBody.innerHTML = '';
+  overlayBody.scrollTop = 0;
   overlayBody.style.overflowY = '';
   overlayBody.style.padding = '';
   if (window.innerWidth <= 768 && infoPanel.classList.contains('is-open')) closePanel(infoPanel);

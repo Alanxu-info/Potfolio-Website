@@ -43,10 +43,8 @@
         "media/Poster gallery/mocp-gallery-16.jpg"
       ]
     },
-    {
-      "type": "duo-mobile-solo",
-      "items": ["media/mocp-14.png", "media/mocp-15.png"]
-    },
+    { "type": "image", "src": "media/mocp-14.png" },
+    { "type": "image", "src": "media/mocp-15.png" },
     { "type": "youtube", "src": "https://www.youtube.com/embed/TryYwZvPksU", "caption": "Museum of Contemporary Photography Main Hall Installation" }
   ]
 }
