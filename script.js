@@ -569,7 +569,11 @@ async function openOverlay(title, slug) {
     });
 
     setTimeout(() => {
-      mediaElements.forEach((el, i) => setTimeout(() => el.classList.add('visible'), i * 80));
+      mediaElements.forEach((el, i) => setTimeout(() => {
+        el.classList.add('visible');
+        if (el.tagName === 'VIDEO') el.play().catch(() => {});
+        el.querySelectorAll('video').forEach(v => v.play().catch(() => {}));
+      }, i * 80));
     }, 400);
 
     // Pause videos/iframes when scrolled out of view (only pause, never auto-resume)
