@@ -22,6 +22,31 @@
       "type": "duo",
       "items": ["media/vct24-02.mp4", "media/vct24-03.jpg"]
     },
-    { "type": "image", "src": "media/vct24-04.jpg" }
+    { "type": "image", "src": "media/vct24-04.jpg" },
+    { "type": "image", "src": "media/vct24-05.jpg" },
+    { "type": "image", "src": "media/vct24-06.jpg" },
+    { "type": "image", "src": "media/Tagline Variation/Tagline Variations 3-04.jpg" },
+    {
+      "type": "gallery",
+      "items": [
+        "media/Tagline Variation/Tagline Variations 3-01.jpg",
+        "media/Tagline Variation/Tagline Variations 3-02.jpg",
+        "media/Tagline Variation/Tagline Variations 3-03.jpg",
+        "media/Tagline Variation/Tagline Variations 3-05.jpg",
+        "media/Tagline Variation/Tagline Variations 3-06.jpg",
+        "media/Tagline Variation/Tagline Variations 3-07.jpg",
+        "media/Tagline Variation/Tagline Variations 3-08.jpg",
+        "media/Tagline Variation/Tagline Variations 3-09.jpg",
+        "media/Tagline Variation/Tagline Variations 3-10.jpg",
+        "media/Tagline Variation/Tagline Variations 3-11.jpg",
+        "media/Tagline Variation/Tagline Variations 3-12.jpg",
+        "media/Tagline Variation/Tagline Variations 3-13.jpg",
+        "media/Tagline Variation/Tagline Variations 3-15.jpg",
+        "media/Tagline Variation/Tagline Variations 3-16.jpg",
+        "media/Tagline Variation/Tagline Variations 3-17.jpg",
+        "media/Tagline Variation/Tagline Variations 3-18.jpg"
+      ]
+    },
+    { "type": "image", "src": "media/Tagline Variation/Tagline Variations 3-14.jpg" }
   ]
 }
