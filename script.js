@@ -472,10 +472,16 @@ async function openOverlay(title, slug) {
       detailsGrid.style.marginBottom = '30px';
       data.details.forEach(col => {
         const colDiv = document.createElement('div');
-        const text = document.createElement('div');
-        text.className = 'h2';
-        text.textContent = col.heading + ': ' + col.items.join(', ');
-        colDiv.appendChild(text);
+        const heading = document.createElement('div');
+        heading.className = 'h2';
+        heading.textContent = col.heading + ':';
+        colDiv.appendChild(heading);
+        col.items.forEach(item => {
+          const line = document.createElement('div');
+          line.className = 'h2';
+          line.textContent = item;
+          colDiv.appendChild(line);
+        });
         detailsGrid.appendChild(colDiv);
       });
       overlayBody.appendChild(detailsGrid);

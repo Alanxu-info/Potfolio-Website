@@ -2,7 +2,7 @@
   "projects": [
     { "title": "Enco International Limited", "slug": "enco" },
     { "title": "LA28 (Wip)", "slug": null },
-    { "title": "VCT24 Supernova", "slug": null },
+    { "title": "VCT24 Supernova", "slug": "vct24" },
     { "title": "Museum of Contemporary Photography", "slug": "mocp" },
     { "title": "Anomie", "slug": "anomie" },
     { "title": "Motion Connect", "slug": "motion-connect" },
