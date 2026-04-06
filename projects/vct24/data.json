@@ -16,5 +16,12 @@
       "items": ["Eugene Seo", "Jason Yeh"]
     }
   ],
-  "media": []
+  "media": [
+    { "type": "video", "src": "media/vct24-01.mp4" },
+    {
+      "type": "duo",
+      "items": ["media/vct24-02.mp4", "media/vct24-03.jpg"]
+    },
+    { "type": "image", "src": "media/vct24-04.jpg" }
+  ]
 }
