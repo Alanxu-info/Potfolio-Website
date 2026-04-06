@@ -454,6 +454,6 @@ body.comic-sans * {
 
   body.comic-sans,
   body.comic-sans * {
-    font-weight: 700 !important;
+    font-weight: 400 !important;
   }
 }

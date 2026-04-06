@@ -156,11 +156,18 @@ function buildGrid() {
   numCols = Math.ceil(window.innerWidth  / STEP) + 3;
   numRows = Math.ceil(window.innerHeight / STEP) + 3;
 
+  const regular = media.filter(m => !m.src.includes('Easter Eggs/'));
+  const rare    = media.filter(m => m.src.includes('Easter Eggs/'));
   const shuffled = [];
   const totalTiles = numCols * numRows;
   while (shuffled.length < totalTiles) {
-    shuffled.push(...[...media].sort(() => Math.random() - 0.5));
+    shuffled.push(...[...regular].sort(() => Math.random() - 0.5));
   }
+  // Sprinkle in easter eggs at random positions (1 each)
+  rare.forEach(item => {
+    const pos = Math.floor(Math.random() * shuffled.length);
+    shuffled[pos] = item;
+  });
 
   const entries = [];
   let tileIdx = 0;
@@ -190,6 +197,18 @@ function buildGrid() {
           e.stopPropagation();
           document.body.classList.toggle('comic-sans');
           showComicSansPanel();
+        });
+      }
+
+      if (name === 'AMONGUS.mp4') {
+        tile.style.cursor = 'pointer';
+        tile.addEventListener('click', e => {
+          e.stopPropagation();
+          showAmongus(item.src);
+          // Replace tile with a random regular media
+          const reg = media.filter(m => !m.src.includes('Easter Eggs/'));
+          const replacement = reg[Math.floor(Math.random() * reg.length)];
+          swapTile(tile, replacement);
         });
       }
 
@@ -346,11 +365,11 @@ function showComicSansPanel() {
   backdrop.style.cssText = 'position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;cursor:pointer;';
 
   const panel = document.createElement('div');
-  panel.style.cssText = 'width:500px;height:250px;background:#D7D7D7;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;';
+  panel.style.cssText = 'width:500px;max-width:90vw;height:250px;background:#D7D7D7;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;';
 
   const text = document.createElement('span');
   text.className = 'h2';
-  text.textContent = 'The whole site is now typeset in Comic Sans. Enjoy. Click anywhere to continue.';
+  text.innerHTML = 'The whole site is now typeset in Comic Sans.<br>Enjoy.';
   panel.appendChild(text);
   backdrop.appendChild(panel);
 
@@ -367,7 +386,25 @@ function showComicSansPanel() {
 }
 
 
-/* ── Init ────────────────────────────────────────────────── */
+/* ── AMONGUS easter egg ────────���─────────────────────────── */
+
+function showAmongus(src) {
+  const video = document.createElement('video');
+  video.src = src;
+  video.muted = true;
+  video.playsInline = true;
+  video.setAttribute('muted', '');
+  video.setAttribute('playsinline', '');
+  video.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10000;max-width:80vw;max-height:80vh;pointer-events:none;';
+  document.body.appendChild(video);
+  video.play().catch(() => {});
+  video.addEventListener('ended', () => video.remove(), { once: true });
+  // Fallback removal in case ended doesn't fire
+  setTimeout(() => { if (video.parentNode) video.remove(); }, 15000);
+}
+
+
+/* ── Init ───────��────────────────��───────────────────────── */
 
 async function initBackground() {
   try {
