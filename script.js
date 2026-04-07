@@ -185,13 +185,17 @@ async function loadWorks() {
     const ul = document.createElement('ul');
     ul.className = 'project-list';
     worksData.projects.forEach(({ title, slug }) => {
-      if (!slug) return;
       const li = document.createElement('li');
       const a  = document.createElement('a');
       a.textContent = title;
       a.className = 'h2';
       a.href = '#';
-      a.addEventListener('click', e => { e.preventDefault(); openOverlay(title, slug); });
+      if (slug) {
+        a.addEventListener('click', e => { e.preventDefault(); openOverlay(title, slug); });
+      } else {
+        a.style.opacity = '0.4';
+        a.style.pointerEvents = 'none';
+      }
       li.appendChild(a);
       ul.appendChild(li);
     });
