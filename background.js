@@ -159,19 +159,37 @@ function buildGrid() {
 
   const regular = media.filter(m => !m.src.includes('Easter Eggs/'));
   const rare    = media.filter(m => m.src.includes('Easter Eggs/'));
-  const shuffled = [];
-  const totalTiles = numCols * numRows;
-  while (shuffled.length < totalTiles) {
-    shuffled.push(...[...regular].sort(() => Math.random() - 0.5));
+
+  // Spatial deduplication: no same media within 5 tiles of each other
+  const grid = [];
+  for (let r = 0; r < numRows; r++) {
+    grid[r] = [];
+    for (let c = 0; c < numCols; c++) {
+      const nearby = new Set();
+      for (let dr = -5; dr <= 0; dr++) {
+        for (let dc = -5; dc <= 5; dc++) {
+          if (dr === 0 && dc >= 0) break;
+          const nr = r + dr, nc = ((c + dc) % numCols + numCols) % numCols;
+          if (nr >= 0 && grid[nr] && grid[nr][nc] !== undefined) {
+            nearby.add(grid[nr][nc]);
+          }
+        }
+      }
+      const candidates = regular.filter((_, idx) => !nearby.has(idx));
+      const pool = candidates.length > 0 ? candidates : regular;
+      const pick = pool[Math.floor(Math.random() * pool.length)];
+      grid[r][c] = regular.indexOf(pick);
+    }
   }
-  // Sprinkle in easter eggs at random positions (1 each)
+
+  // Sprinkle easter eggs at random positions
   rare.forEach(item => {
-    const pos = Math.floor(Math.random() * shuffled.length);
-    shuffled[pos] = item;
+    const r = Math.floor(Math.random() * numRows);
+    const c = Math.floor(Math.random() * numCols);
+    grid[r][c] = -(rare.indexOf(item) + 1); // negative = easter egg index
   });
 
   const entries = [];
-  let tileIdx = 0;
 
   for (let r = 0; r < numRows; r++) {
     for (let c = 0; c < numCols; c++) {
@@ -183,7 +201,8 @@ function buildGrid() {
       container.appendChild(tile);
       tiles.push(tile);
 
-      const item = shuffled[tileIdx++];
+      const idx = grid[r][c];
+      const item = idx < 0 ? rare[-(idx + 1)] : regular[idx];
       const name = item.src.split('/').pop();
 
       if (!isTouchDevice) {
@@ -211,7 +230,6 @@ function buildGrid() {
         tile.addEventListener('click', e => {
           e.stopPropagation();
           showAmongus('background/Easter Eggs/AMONGUS.mp4');
-          // Replace tile with a random regular media
           const reg = media.filter(m => !m.src.includes('Easter Eggs/'));
           const replacement = reg[Math.floor(Math.random() * reg.length)];
           swapTile(tile, replacement);
@@ -228,17 +246,28 @@ function buildGrid() {
         });
       }
 
-      entries.push({ tile, item });
+      entries.push({ tile, item, r, c });
     }
   }
 
-  // Shuffle entries so tiles load in random order
-  entries.sort(() => Math.random() - 0.5);
+  // Sort: on-screen tiles first, then random for the rest
+  const screenW = window.innerWidth, screenH = window.innerHeight;
+  entries.sort((a, b) => {
+    const aOn = a.c * STEP < screenW + STEP && a.r * STEP < screenH + STEP;
+    const bOn = b.c * STEP < screenW + STEP && b.r * STEP < screenH + STEP;
+    if (aOn && !bOn) return -1;
+    if (!aOn && bOn) return 1;
+    return Math.random() - 0.5;
+  });
 
-  // Queue loading in shuffled order, stagger fade-in
-  entries.forEach(({ tile, item }, i) => {
+  // Show placeholder tiles immediately, load media with blur-in
+  entries.forEach(({ tile }, i) => {
+    setTimeout(() => tile.classList.add('visible'), Math.min(i * 15, 300));
+  });
+
+  entries.forEach(({ tile, item }) => {
     loadQueue(() => createMedia(tile, item)).then(() => {
-      setTimeout(() => tile.classList.add('visible'), i * 30);
+      tile.classList.add('loaded');
     });
   });
 }
