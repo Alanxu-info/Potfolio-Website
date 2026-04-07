@@ -266,9 +266,7 @@ function buildGrid() {
   });
 
   entries.forEach(({ tile, item }) => {
-    loadQueue(() => createMedia(tile, item)).then(() => {
-      tile.classList.add('loaded');
-    });
+    loadQueue(() => createMedia(tile, item));
   });
 }
 
@@ -314,7 +312,7 @@ function positionTile(tile) {
   const totalH = numRows * STEP;
   const x = ((tile._col * STEP + offsetX) % totalW + totalW) % totalW - STEP;
   const y = ((tile._row * STEP + offsetY) % totalH + totalH) % totalH - STEP;
-  tile.style.transform = `translate(${x}px, ${y}px)`;
+  tile.style.transform = `translate3d(${x}px, ${y}px, 0)`;
 
   const vid = tile.querySelector('video');
   if (vid) {

@@ -63,6 +63,10 @@ body.comic-sans * {
   user-select: none;
   -webkit-user-select: none;
   will-change: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .bg-tile.visible {
@@ -79,13 +83,6 @@ body.comic-sans * {
   user-select: none;
   -webkit-user-select: none;
   -webkit-user-drag: none;
-  filter: blur(12px);
-  transition: filter 0.5s ease;
-}
-
-.bg-tile.loaded video,
-.bg-tile.loaded img {
-  filter: blur(0);
 }
 
 .bg-tile video::-webkit-media-controls,
