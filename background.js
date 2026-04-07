@@ -161,32 +161,43 @@ function buildGrid() {
   const rare    = media.filter(m => m.src.includes('Easter Eggs/'));
 
   // Spatial deduplication: no same media within 5 tiles of each other
-  const grid = [];
+  // Fill grid cell-by-cell; for each cell pick a random item not used by any
+  // neighbour within Chebyshev distance 5 (wrapping both axes).
+  const grid = [];               // grid[r][c] = index into regular[]
+  const totalTiles = numCols * numRows;
+
   for (let r = 0; r < numRows; r++) {
     grid[r] = [];
     for (let c = 0; c < numCols; c++) {
       const nearby = new Set();
-      for (let dr = -5; dr <= 0; dr++) {
+      for (let dr = -5; dr <= 5; dr++) {
         for (let dc = -5; dc <= 5; dc++) {
-          if (dr === 0 && dc >= 0) break;
-          const nr = r + dr, nc = ((c + dc) % numCols + numCols) % numCols;
-          if (nr >= 0 && grid[nr] && grid[nr][nc] !== undefined) {
+          if (dr === 0 && dc === 0) continue;
+          const nr = ((r + dr) % numRows + numRows) % numRows;
+          const nc = ((c + dc) % numCols + numCols) % numCols;
+          if (grid[nr] && grid[nr][nc] !== undefined) {
             nearby.add(grid[nr][nc]);
           }
         }
       }
-      const candidates = regular.filter((_, idx) => !nearby.has(idx));
-      const pool = candidates.length > 0 ? candidates : regular;
-      const pick = pool[Math.floor(Math.random() * pool.length)];
-      grid[r][c] = regular.indexOf(pick);
+      const candidates = [];
+      for (let i = 0; i < regular.length; i++) {
+        if (!nearby.has(i)) candidates.push(i);
+      }
+      if (candidates.length > 0) {
+        grid[r][c] = candidates[Math.floor(Math.random() * candidates.length)];
+      } else {
+        // fallback: pick least-recently-used nearby item
+        grid[r][c] = Math.floor(Math.random() * regular.length);
+      }
     }
   }
 
   // Sprinkle easter eggs at random positions
-  rare.forEach(item => {
+  rare.forEach((item, ei) => {
     const r = Math.floor(Math.random() * numRows);
     const c = Math.floor(Math.random() * numCols);
-    grid[r][c] = -(rare.indexOf(item) + 1); // negative = easter egg index
+    grid[r][c] = -(ei + 1); // negative = easter egg index
   });
 
   const entries = [];
