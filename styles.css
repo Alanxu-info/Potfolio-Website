@@ -63,7 +63,6 @@ body.comic-sans * {
   user-select: none;
   -webkit-user-select: none;
   will-change: transform;
-  background: #e8e8e8;
 }
 
 .bg-tile.visible {
