@@ -309,7 +309,7 @@ function openResumeOverlay() {
       { text: 'Sept 2019 \u2013 May 2020', cls: 'h2' },
       { text: 'Woodbury University', cls: 'h2' },
       { text: 'Burbank, CA', cls: 'h2' },
-      { text: 'Bachelor of Interdisciplinary Study', cls: 'caption' }
+      { text: 'Bachelor of Arts in Interdisciplinary Study', cls: 'caption' }
     ])
   ]));
   grid.appendChild(col1);

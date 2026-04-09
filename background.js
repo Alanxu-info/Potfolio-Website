@@ -80,7 +80,7 @@ function makeQueue(limit) {
   return fn => new Promise(resolve => { pending.push({ fn, resolve }); next(); });
 }
 
-const loadQueue = makeQueue(6);
+const loadQueue = makeQueue(10);
 
 
 /* ── Tooltip ─────────────────────────────────────────────── */
@@ -127,8 +127,8 @@ function createMedia(tile, item) {
       video.src = item.src;
       tile.appendChild(video);
       video.play().then(() => blockedVideos.delete(video)).catch(() => blockedVideos.add(video));
-      video.addEventListener('playing', resolve, { once: true });
-      setTimeout(resolve, 3000);
+      video.addEventListener('canplay', resolve, { once: true });
+      setTimeout(resolve, 1500);
     } else {
       const img = document.createElement('img');
       img.addEventListener('load',  resolve, { once: true });
@@ -271,13 +271,11 @@ function buildGrid() {
     return Math.random() - 0.5;
   });
 
-  // Show placeholder tiles immediately, load media with blur-in
-  entries.forEach(({ tile }, i) => {
-    setTimeout(() => tile.classList.add('visible'), Math.min(i * 15, 300));
-  });
-
+  // Load media, fade in with opacity ease when ready
   entries.forEach(({ tile, item }) => {
-    loadQueue(() => createMedia(tile, item));
+    loadQueue(() => createMedia(tile, item)).then(() => {
+      tile.classList.add('visible');
+    });
   });
 }
 
