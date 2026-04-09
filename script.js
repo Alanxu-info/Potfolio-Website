@@ -336,12 +336,6 @@ function openResumeOverlay() {
       { text: 'Developed brand identity systems for Riot Games\u2019 2024 VALORANT World Championship Tour and League of Legends MSI 26, producing scalable assets for global event branding.', cls: 'caption' }
     ]),
     makeEntry([
-      { text: 'May 2023 \u2013 Sept 2023', cls: 'h2' },
-      { text: 'Graphic Design Intern', cls: 'h2' },
-      { text: 'Massive Assembly', cls: 'h2' },
-      { text: 'Designed a 250-page process book documenting four cinematic projects from concept to final render. Created internal motion assets for presentations and communications.', cls: 'caption' }
-    ]),
-    makeEntry([
       { text: 'Oct 2025 \u2013 Dec 2025', cls: 'h2' },
       { text: 'Design Residency', cls: 'h2' },
       { text: 'Fork, Seoul, Korea', cls: 'h2' },
@@ -360,10 +354,10 @@ function openResumeOverlay() {
       { text: 'Designed and animated motion graphics for internal and external projects in collaboration with the studio team. Contributed to client-facing work for brands including Apple, Sonic, and Buffalo Wild Wings.', cls: 'caption' }
     ]),
     makeEntry([
-      { text: 'Jan 2025 \u2013 May 2025', cls: 'h2' },
-      { text: 'Freelance Graphic & Motion Designer', cls: 'h2' },
-      { text: '10 Summers/DJ Mustard, Los Angeles, CA', cls: 'h2' },
-      { text: 'Designed brand and identity system for DJ Mustard, including logo, typography, 2D and 3D animation, vinyl album artwork, title cards, and supporting visual assets.', cls: 'caption' }
+      { text: 'May 2021 \u2013 April 2025', cls: 'h2' },
+      { text: 'Graphic Design Department Events Team Lead', cls: 'h2' },
+      { text: 'ArtCenter College of Design, Los Angeles, CA', cls: 'h2' },
+      { text: 'Designed and managed the ArtCenter Designer Speaker Series, coordinating outreach to international designers and producing promotional assets for department events and communications.', cls: 'caption' }
     ]),
     makeEntry([
       { text: 'April 2024 \u2013 Aug 2024', cls: 'h2' },
@@ -372,10 +366,16 @@ function openResumeOverlay() {
       { text: 'Collaborated cross-disciplinarily on a hypothetical Samsung Galaxy campaign, designing a complete brand identity system to support product concepts and visuals.', cls: 'caption' }
     ]),
     makeEntry([
-      { text: 'May 2021 \u2013 April 2025', cls: 'h2' },
-      { text: 'Graphic Design Department Events Team Lead', cls: 'h2' },
-      { text: 'ArtCenter College of Design, Los Angeles, CA', cls: 'h2' },
-      { text: 'Designed and managed the ArtCenter Designer Speaker Series, coordinating outreach to international designers and producing promotional assets for department events and communications.', cls: 'caption' }
+      { text: 'April 2024 \u2013 July 2024', cls: 'h2' },
+      { text: 'Freelance Graphic & Motion Designer', cls: 'h2' },
+      { text: '10 Summers/DJ Mustard, Los Angeles, CA', cls: 'h2' },
+      { text: 'Designed brand and identity system for DJ Mustard, including logo, typography, 2D and 3D animation, vinyl album artwork, title cards, and supporting visual assets.', cls: 'caption' }
+    ]),
+    makeEntry([
+      { text: 'May 2023 \u2013 Sept 2023', cls: 'h2' },
+      { text: 'Graphic Design Intern', cls: 'h2' },
+      { text: 'Massive Assembly', cls: 'h2' },
+      { text: 'Designed a 250-page process book documenting four cinematic projects from concept to final render. Created internal motion assets for presentations and communications.', cls: 'caption' }
     ]),
     makeEntry([
       { text: 'Jan 2022 \u2013 May 2022', cls: 'h2' },
